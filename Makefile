@@ -12,6 +12,7 @@ run-server-websocket:
 tidy:
 	cd backend && go mod tidy
 	
-# Optional: Add a default target
 .PHONY: all
 all: run-server
+# hướng dẫn chạy source code
+# hãy chạy lần lượt các make run....
