@@ -1,0 +1,9 @@
+transformers
+datasets
+torch
+pandas
+grpcio
+grpcio-tools
+protobuf
+tokenizers
+numpy

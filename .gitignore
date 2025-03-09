@@ -1,0 +1,62 @@
+#BE
+backend/cmd/server/*.exe
+backend/.env
+node_modules
+
+#FE: Desktop
+# Thư mục biên dịch
+frontend-desktop/GUI/bin/
+frontend-desktop/GUI/obj/
+frontend-desktop/DTO/bin/
+frontend-desktop/DTO/obj/
+frontend-desktop/CustomControl/bin/
+frontend-desktop/CustomControl/obj/
+frontend-desktop/BLL/bin/
+frontend-desktop/BLL/obj/
+frontend-desktop/.vs/
+
+# Bỏ qua thư mục __pycache__ và các file .pyc, .pyo
+vietnamese-cyberbullying/__pycache__/
+vietnamese-cyberbullying/logs
+vietnamese-cyberbullying/output
+vietnamese-cyberbullying/data
+vietnamese-cyberbullying/train_vietnamese.py
+vietnamese-cyberbullying/detection_cyberbullying.py
+vietnamese-cyberbullying/test_vietnamese.py
+vietnamese-cyberbullying/test.py
+*.pyc
+*.pyo
+
+# Tệp cấu hình nhạy cảm
+*.user
+*.suo
+*.userprefs
+
+# Thư mục cài đặt
+packages/
+*.nupkg
+
+# Tệp tạm thời
+*.tmp
+*.log
+
+# Thư mục .vs
+.vs/
+**/.vs/
+
+# Thư mục cho công cụ mã hóa
+*.ide
+
+# Tệp cấu hình của Visual Studio
+*.csproj.user
+*.vbproj.user
+
+# Các tệp và thư mục khác không cần thiết
+Thumbs.db
+ehthumbs.db
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pdb
+*.cache
+*.sln.docstates

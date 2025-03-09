@@ -1,0 +1,163 @@
+/* Sidebar header - căn chỉnh các phần tử bên trong header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+  background-color: #000; /* Đặt màu nền cho header */
+}
+
+
+/* Biểu tượng kính lúp */
+.search-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  margin-right: 5px; /* Giảm khoảng cách giữa biểu tượng và dropdown */
+}
+/* Ô tìm kiếm - hiển thị mượt khi bật */
+.search-input {
+  width: 45% !important;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #1a1a1a;
+  color: white;
+  transition: width 0.3s ease;
+}
+
+/* Khi input được kích hoạt, cho phép mở rộng */
+.sidebar-header .search-input.open {
+  width: 100%; /* Chiếm toàn bộ không gian */
+}
+
+/* Dropdown cho bộ lọc */
+.form-select {
+  width: 100%; /* Chiều rộng full */
+  max-width: 100px; /* Giới hạn chiều rộng tối đa */
+  padding: 8px 12px; /* Khoảng padding bên trong */
+  font-size: 16px; /* Kích thước chữ */
+  font-weight: bold; /* Chữ đậm */
+  color: #e9edef; /* Màu chữ */
+  background-color: #1a1a1a; /* Màu nền */
+  border: 1px solid #333; /* Đường viền */
+  border-radius: 5px; /* Bo góc */
+  outline: none; /* Xóa đường viền mặc định khi focus */
+  appearance: none; /* Ẩn mũi tên mặc định */
+  cursor: pointer; /* Con trỏ chuột kiểu pointer */
+  transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+/* Danh sách tin nhắn */
+.message-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.message-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #333;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.message-item:hover {
+  background-color: #2a2a2a;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.message-info {
+  flex-grow: 1;
+}
+
+.message-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.message-last {
+  font-size: 14px;
+  color: #888;
+}
+
+.no-messages {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+}
+/* Hiệu ứng khi hover vào dropdown */
+.form-select:hover {
+  background-color: white; /* Đổi màu nền khi hover */
+  border-color: #555; /* Đổi màu viền khi hover */
+}
+.form-select:focus {
+  background-color: white; /* Màu nền khi focus */
+  border-color: #888; /* Màu viền khi focus */
+}
+
+/* Mũi tên tùy chỉnh (trang trí bằng background-image) */
+.form-select::after {
+  content: ''; /* Nội dung mũi tên */
+  position: absolute;
+  right: 12px; /* Đặt mũi tên bên phải */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23e9edef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M6 9l6 6 6-6"/%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none; /* Không bắt sự kiện chuột */
+}
+/* Hiệu ứng mượt khi chuyển trạng thái tìm kiếm */
+.search-input {
+  width: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #1a1a1a;
+  color: white;
+  transition: width 0.3s ease, padding 0.3s ease; /* Hiệu ứng mở rộng */
+}
+
+.sidebar-header .search-input.open {
+  width: 100%; /* Chiếm toàn bộ không gian khi mở */
+  padding: 5px 10px;
+}
+
+/* Căn giữa thông báo không có tin nhắn */
+.no-messages {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Thêm biểu tượng cho "Không có tin nhắn" */
+.no-messages:before {
+  content: "📭";
+  display: block;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.selected {
+  background-color: #f0f0f0; /* Hoặc bất kỳ màu nào bạn muốn */
+  border-left: 4px solid #007bff; /* Thêm một đường viền bên trái để làm nổi bật */
+}

@@ -1,0 +1,43 @@
+/* Tabs container */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+    top: 0;
+    z-index: 9;
+  }
+  
+  /* Individual tab button */
+  .tab {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+    color: #b3b3b3;
+    background: none;
+    border: none;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  /* Active tab style */
+  .tab.active {
+    color: #ffffff; /* Màu chữ khi được chọn */
+    font-weight: bold;
+    border-bottom: 3px solid #ffffff; /* Đường gạch dưới để nhấn mạnh */
+  }
+  
+  /* Hover effect */
+  .tab:hover {
+    color: #ffffff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .tab {
+      font-size: 0.9rem; /* Giảm kích thước chữ trên màn hình nhỏ */
+    }
+  }
+  

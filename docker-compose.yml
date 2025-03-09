@@ -1,0 +1,39 @@
+services:
+  # Dịch vụ vietnamese-cyberbullying (gRPC server)
+  vietnamese-cyberbullying:
+    build:
+      context: ./vietnamese-cyberbullying
+      dockerfile: Dockerfile
+    container_name: vietnamese-cyberbullying
+    volumes:
+      - ./vietnamese-cyberbullying/logs:/app/logs
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "grpcurl -v -plaintext localhost:50051"]
+      interval: 10s
+      retries: 5
+      start_period: 60s
+      timeout: 5s
+    ports:
+      - "50051:50051"  # Mở cổng 50051 cho dịch vụ gRPC
+
+  # Dịch vụ backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "3000:3000"  # Mở cổng 3000 cho backend Golang
+    environment:
+      - GO_ENV=production
+    depends_on:
+      - vietnamese-cyberbullying  # Đảm bảo backend chỉ khởi động sau khi gRPC server sẵn sàng
+    networks:
+      - app-network
+    command: ["go", "run", "cmd/server/main.go"]
+
+networks:
+  app-network:
+    driver: bridge

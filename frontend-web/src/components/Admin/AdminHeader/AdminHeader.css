@@ -1,0 +1,61 @@
+.header-admin {
+  border-bottom: 1px solid #ddd;
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
+.admin-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.admin-name {
+  margin-left: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Dropdown Menu */
+.dropdown-menu.custom-dropdown {
+  position: absolute;
+  top: 60px; /* Adjust as per header height */
+  right: 0;
+  min-width: 150px;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1050;
+}
+
+/* Dropdown menu visibility when open */
+.dropdown-menu.custom-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Item */
+.dropdown-item {
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}

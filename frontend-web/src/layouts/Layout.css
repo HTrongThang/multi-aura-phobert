@@ -1,0 +1,18 @@
+.layout {
+  display: flex;
+  margin: 0;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.content-area {
+  background-color: black !important  ; /* Màu nền đen tối */
+  color: #fff; /* Màu chữ trắng */
+  flex-grow: 1;
+  margin: 0;
+}

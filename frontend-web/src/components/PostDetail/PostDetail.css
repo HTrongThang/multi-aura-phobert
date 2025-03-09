@@ -1,0 +1,366 @@
+/* General Styles */
+.post-detail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 20px;
+}
+
+.post-detail-container {
+    display: flex;
+    background-color: black;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    height: 90%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    flex-direction: row;
+    position: relative;
+}
+
+.post-detail-left,
+.post-detail-right {
+    padding: 10px;
+    flex: 1;
+}
+
+/* Image Section */
+.post-detail-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.post-detail-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Post Information Section */
+.post-detail-right {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    color: #fff;
+}
+
+.post-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    color: #fff;
+}
+
+.post-detail-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-detail-header-right {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.post-detail-username {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.post-detail-fullname {
+    font-size: 18px;
+    color: #bbb;
+}
+
+.post-detail-header-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-detail-ellipsis {
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.post-detail-ellipsis:hover {
+    color: #007bff;
+}
+
+/* Post Description */
+.post-detail-description {
+    display: flex;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 90px;
+
+}
+
+.audio-btn {
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    width: 90px;
+
+
+    align-items: center;
+}
+
+.audio-btn img {
+    width: 90px;
+    height: auto;
+}
+
+.audio-btn:hover {
+    background-color: #45a049;
+}
+
+.post-description-details {
+    color: white;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    align-items: center;
+}
+
+.audio-btn svg {
+    color: white;
+}
+
+audio {
+    display: none;
+}
+
+/* Image Gallery Styles */
+.react-image-gallery__image {
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.react-image-gallery__image img {
+    border-radius: 12px;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .post-detail-container {
+        flex-direction: column;
+        height: 95%;
+        width: 95%;
+    }
+
+    .post-detail-left,
+    .post-detail-right {
+        width: 80%;
+    }
+
+    .post-detail-description {
+        font-size: 16px;
+    }
+
+    .comment-input {
+        font-size: 15px;
+    }
+
+    .comment-submit-button {
+        padding: 8px 12px;
+    }
+}
+
+.react-image-gallery__icon {
+    width: 15px !important;
+    height: 15px !important;
+}
+
+.react-image-gallery__svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.image-gallery-svg {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+
+@media (max-width: 768px) {
+    .post-detail-comment {
+        padding: 10px;
+    }
+
+    .post-detail-comment {
+        padding: 10px;
+    }
+
+    .comment-username {
+        font-size: 13px;
+    }
+
+    .comment-time {
+        font-size: 11px;
+    }
+
+   
+}
+
+.post-detail-add-comment {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    background-color: black;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid white;
+}
+
+.comment-input-container {
+    width: 100%;
+
+}
+
+.share-input-container {
+    width: 100%;
+}
+
+.input-container {
+    width: 100%;
+}
+
+.share-input {
+    border-bottom: 1px solid white !important;
+    border-radius: 0px !important;
+}
+
+.comment-input,
+.share-input {
+    border: none;
+    flex: 1;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: black;
+    padding-right: 30px;
+    width: 100%;
+}
+
+.comment-submit-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.show-Input-Comment {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    border-bottom: 1px solid white;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.comment-submit-button:hover {
+    color: #0056b3;
+}
+
+.fas {
+    font-size: 20px;
+}
+
+.comment-submit-button.active {
+    color: white;
+    opacity: 1;
+}
+
+.comment-submit-button:disabled {
+    cursor: not-allowed;
+    color: #413f3f;
+}
+
+.large-image {
+    max-width: 100%;
+}
+
+.resize-image {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto;
+    object-fit: cover;
+    background-color: #f0f0f0;
+}
+
+.post-detail-header-title {
+    display: flex;
+}
+
+.post-detail-header-left {
+    display: flex;
+    align-items: center;
+}
+
+.post-detail-header-actions {
+    position: relative;
+}
+
+.post-detail-ellipsis {
+    cursor: pointer;
+}
+
+.post-menu {
+    position: absolute;
+    top: 55px;
+    z-index: 2000;
+    left: 90%;
+}

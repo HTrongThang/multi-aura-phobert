@@ -1,0 +1,12 @@
+/* Header container */
+.drawer-header {
+    border-bottom: 1px solid #333;
+}
+
+/* Title style */
+.header-title-contification {
+    margin: 0;
+    font-size: 1.8rem !important;
+    font-weight: bold;
+    color: #ffffff;
+}

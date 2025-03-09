@@ -1,0 +1,59 @@
+/* Grid Layout */
+.emoji-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); /* Tự động co giãn ô */
+    gap: 12px; /* Tăng khoảng cách giữa các emoji */
+    padding: 15px;
+    max-height: 250px; /* Giới hạn chiều cao của khung emoji */
+    overflow-y: auto; /* Bật cuộn dọc khi vượt quá chiều cao */
+    background: #2b2b2d; /* Màu nền mịn hơn */
+    border: 1px solid #444; /* Đường viền nhẹ hơn */
+    border-radius: 12px; /* Bo góc mềm mại */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* Đổ bóng đậm hơn */
+}
+
+/* Emoji Item */
+.emoji-picker-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3c3c3e; /* Màu nền từng ô */
+    border-radius: 12px; /* Bo góc từng emoji */
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease; /* Hiệu ứng mượt hơn */
+}
+
+/* Hover Effect */
+.emoji-picker-item:hover {
+    background: #008cfc; /* Màu nền xanh sáng khi hover */
+    transform: scale(1.2); /* Phóng to hơn khi hover */
+}
+
+/* Emoji Icon */
+.emoji-icon {
+    font-size: 22px; /* Kích thước emoji lớn hơn */
+    color: #fff; /* Màu trắng sắc nét */
+}
+
+/* Loading & Error Text */
+.emoji-picker-loading,
+.emoji-picker-error {
+    text-align: center;
+    color: #ccc; /* Màu chữ xám nhạt */
+    font-size: 16px; /* Tăng kích thước chữ */
+    margin: 15px 0; /* Khoảng cách giữa các đoạn văn */
+}
+
+/* Scrollbar Styling */
+.emoji-picker-grid::-webkit-scrollbar {
+    width: 8px; /* Độ rộng scrollbar */
+}
+
+.emoji-picker-grid::-webkit-scrollbar-thumb {
+    background: #555; /* Màu thanh cuộn */
+    border-radius: 8px; /* Bo góc thanh cuộn */
+}
+
+.emoji-picker-grid::-webkit-scrollbar-thumb:hover {
+    background: #007bff; /* Màu khi hover trên thanh cuộn */
+}

@@ -1,0 +1,6 @@
+{
+    "model_dir": "output/vietnamese_cyberbullying/checkpoint-4509",
+    "test_data_path": "data/test.csv",
+    "max_length": 128,
+    "output_predictions_path": "logs/test_predictions.txt"
+}

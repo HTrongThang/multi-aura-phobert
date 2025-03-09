@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package toxicity;
+
+service ToxicityService {
+  rpc AnalyzeText (AnalyzeRequest) returns (AnalyzeResponse);
+}
+
+message AnalyzeRequest {
+  string text = 1;
+}
+
+message AnalyzeResponse {
+  double toxicity_score = 1;
+}

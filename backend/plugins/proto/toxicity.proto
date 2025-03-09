@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package toxicity;
+option go_package = "multiaura/toxicity";
+
+service ToxicityService {
+  rpc AnalyzeText (AnalyzeRequest) returns (AnalyzeResponse);
+}
+
+message AnalyzeRequest {
+  string text = 1;
+}
+
+message AnalyzeResponse {
+  double toxicity_score = 1;
+}

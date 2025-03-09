@@ -1,0 +1,50 @@
+/* Notification Item Container */
+.notification-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid white; /* Subtle border for separation */
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+  }
+  
+  .notification-item:hover {
+    background-color: #2a2a2a; /* Slightly lighter on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  }
+  
+  .notification-avatar {
+    flex-shrink: 0; /* Prevent shrinking */
+    margin-right: 15px;
+  }
+  
+  .avatar-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Circular avatar */
+    border: 2px solid #555; /* Border around the avatar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  }
+  
+  /* Content */
+  .notification-content {
+    flex-grow: 1; /* Expand to fill space */
+    color: #eaeaea; /* Light text color for contrast */
+  }
+  
+  .notification-message {
+    display: block; /* Block-level for proper spacing */
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  .notification-message strong {
+    color: #ffffff; /* Bold text */
+  }
+  
+  .notification-time {
+    font-size: 0.85rem; /* Smaller font size for time */
+    color: #aaa; /* Subtle color for time */
+  }
+  
