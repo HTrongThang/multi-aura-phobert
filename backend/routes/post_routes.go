@@ -44,4 +44,6 @@ func SetupPostRoutes(app *fiber.App) {
 	posts.Post("/create", middlewares.AuthMiddleware(), controller.CreatePost)
 	posts.Delete("/delete/:postID", middlewares.AuthMiddleware(), controller.DeletePost)
 	posts.Get("/:id", controller.GetPostByID)
+	
+	posts.Post("/notification", middlewares.AuthMiddleware(), controller.CreateNotification)
 }

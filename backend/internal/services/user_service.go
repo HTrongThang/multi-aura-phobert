@@ -19,6 +19,9 @@ type UserService interface {
 	ForgotPassword(email string) error
 	ChangePassword(userID, oldPassword, newPassword string) error
 	ComparePassword(hashedPassword string, plainPassword string) error
+	CreateNotification(nofi *models.CreateNotificationRequest) (*models.Notification, error)
+	GetNotificationByType(userID string, notificationType string) ([]*models.Notification, error)
+	DeleteNotificationByPostUserAndType(postID string, userID string, notificationType string) error
 }
 
 type userService struct {
@@ -183,4 +186,67 @@ func (s *userService) ChangePassword(userID, oldPassword, newPassword string) er
 	// user.Password = string(hashedPassword)
 	// return s.repo.Update(*user)
 	return errors.New("can not change password")
+}
+
+
+// Create Notification
+func (s *userService) CreateNotification(nofi *models.CreateNotificationRequest) (*models.Notification, error) {
+    // Kiểm tra user tương tác có tồn tại không
+    user, err := s.repo.GetUserByID(nofi.UserID)
+    if err != nil {
+        return nil, errors.New("failed to get interacting user: " + err.Error())
+    }
+
+    // Lấy thông tin bài viết để xác định người viết bài
+    post, err := s.repo.GetPostByID(nofi.PostID)
+    if err != nil {
+        return nil, errors.New("failed to get post: " + err.Error())
+    }
+
+    // Kiểm tra người viết bài có tồn tại không
+    author, err := s.repo.GetUserByID(post.AuthorID)
+    if err != nil {
+        return nil, errors.New("failed to get post author: " + err.Error())
+    }
+
+    // Tạo thông báo mới
+    newNofi := &models.Notification{
+        ID:          primitive.NewObjectID(),
+        PostID:      nofi.PostID,
+        UserID:      *user,
+        AuthorID: 	 *author,
+        CreateTime:  time.Now().UTC(),
+        Type:        nofi.Type,
+        Description: nofi.Description,
+    }
+
+    // Lưu vào database
+    err = s.repo.CreateNotification(*newNofi)
+    if err != nil {
+        return nil, errors.New("failed to create notification: " + err.Error())
+    }
+
+    return newNofi, nil
+}
+
+// Get Notification by UserID and Type
+func (s *userService) GetNotificationByType(userID string, notificationType string) ([]*models.Notification, error) {
+    // Lấy danh sách thông báo từ repository dựa trên userID và type
+    nofis, err := s.repo.GetNotificationByType(userID, notificationType)
+    if err != nil {
+        return nil, errors.New("failed to get notifications: " + err.Error())
+    }
+
+    return nofis, nil
+}
+
+// Delete Notification by PostID, UserID, and NotificationType
+func (s *userService) DeleteNotificationByPostUserAndType(postID string, userID string, notificationType string) error {
+    // Gọi repository để xóa thông báo dựa trên PostID, UserID, và NotificationType
+    err := s.repo.DeleteNotificationByPostUserAndType(postID, userID, notificationType)
+    if err != nil {
+        return errors.New("failed to delete notification: " + err.Error())
+    }
+
+    return nil
 }

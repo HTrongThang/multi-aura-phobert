@@ -862,3 +862,32 @@ func (pc *PostController) GetToxicPostsByDate(c *fiber.Ctx) error {
 		Data:    posts,
 	})
 }
+
+
+// Create Nofication
+func (pc *PostController) CreateNotification(c *fiber.Ctx) error {
+    var req models.CreateNotificationRequest
+
+    if err := c.BodyParser(&req); err != nil {
+        return c.Status(fiber.StatusBadRequest).JSON(APIResponse.ErrorResponse{
+            Status:  fiber.StatusBadRequest,
+            Message: "Invalid request body",
+            Error:   "BadRequest",
+        })
+    }
+
+    notification, err := pc.service.CreateNotification(&req)
+    if err != nil {
+        return c.Status(fiber.StatusInternalServerError).JSON(APIResponse.ErrorResponse{
+            Status:  fiber.StatusInternalServerError,
+            Message: err.Error(),
+            Error:   "InternalServerError",
+        })
+    }
+
+    return c.Status(fiber.StatusCreated).JSON(APIResponse.SuccessResponse{
+        Status:  fiber.StatusCreated,
+        Message: "Notification created successfully",
+        Data:    notification,
+    })
+}

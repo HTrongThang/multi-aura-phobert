@@ -40,6 +40,8 @@ type UserRepository interface {
 	UploadProfilePhoto(userID, url string) (bool, error)
 	GetMutualFollowings(targetUserID, userID string) ([]*models.UserSummary, error)
 	GetMutualFriends(targetUserID, userID string) ([]*models.UserSummary, error)
+	DeleteNotificationByPostUserAndType(postID, userID, notifType string) error
+	GetNotificationByType(userID, notifType string) ([]*models.Notification, error)
 }
 
 type userRepository struct {
@@ -1528,4 +1530,36 @@ func (repo *userRepository) GetMutualFriends(targetUserID, userID string) ([]*mo
 	}
 
 	return mutualFriendList, nil
+}
+
+// Delete Notification by PostID, UserID, and NotificationType
+func (r *notificationRepository) DeleteNotificationByPostUserAndType(postID string, userID string, notificationType string) error {
+    filter := bson.M{
+        "postID": postID,
+        "userID": userID,
+        "type":   notificationType,
+    }
+
+    // Thực hiện xóa thông báo dựa trên bộ lọc
+    _, err := r.collection.DeleteOne(context.TODO(), filter)
+    if err != nil {
+        return err
+    }
+
+    return nil
+}
+
+func (r *notificationRepository) GetNotificationByType(userID string, notificationType string) ([]*models.Notification, error) {
+    var notifications []*models.Notification
+    filter := bson.M{
+        "user_id": userID,
+        "type":    notificationType,
+	}
+
+    err := r.collection.Find(filter).All(&notifications)
+    if err != nil {
+        return nil, err
+    }
+
+    return notifications, nil
 }

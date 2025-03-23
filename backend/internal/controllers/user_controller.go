@@ -236,3 +236,91 @@ func (uc *UserController) ChangePassword(c *fiber.Ctx) error {
 		Data:    nil,
 	})
 }
+
+// Delete Notification 
+func (uc *UserController) DeleteNotification(c *fiber.Ctx) error {
+    postID := c.Query("postID")
+    userID := c.Query("userID")
+    notificationType := c.Query("type")
+
+    if postID == "" || userID == "" || notificationType == "" {
+        return c.Status(fiber.StatusBadRequest).JSON(APIResponse.ErrorResponse{
+            Status:  fiber.StatusBadRequest,
+            Message: "Missing required query parameters",
+            Error:   "BadRequest",
+        })
+    }
+
+    err := uc.service.DeleteNotificationByPostUserAndType(postID, userID, notificationType)
+    if err != nil {
+        return c.Status(fiber.StatusInternalServerError).JSON(APIResponse.ErrorResponse{
+            Status:  fiber.StatusInternalServerError,
+            Message: err.Error(),
+            Error:   "InternalServerError",
+        })
+    }
+
+    return c.Status(fiber.StatusOK).JSON(APIResponse.SuccessResponse{
+        Status:  fiber.StatusOK,
+        Message: "Notification deleted successfully",
+        Data:    nil,
+    })
+}
+
+
+// Get Notification By Type
+func (uc *UserController) GetNotification(c *fiber.Ctx) error {
+    userID := c.Query("userID")
+    notificationType := c.Query("type")
+
+    if userID == "" || notificationType == "" {
+        return c.Status(fiber.StatusBadRequest).JSON(APIResponse.ErrorResponse{
+            Status:  fiber.StatusBadRequest,
+            Message: "Missing required query parameters",
+            Error:   "BadRequest",
+        })
+    }
+
+    notifications, err := uc.service.GetNotificationByType(userID, notificationType)
+    if err != nil {
+        return c.Status(fiber.StatusInternalServerError).JSON(APIResponse.ErrorResponse{
+            Status:  fiber.StatusInternalServerError,
+            Message: err.Error(),
+            Error:   "InternalServerError",
+        })
+    }
+
+    return c.Status(fiber.StatusOK).JSON(APIResponse.SuccessResponse{
+        Status:  fiber.StatusOK,
+        Message: "Notifications retrieved successfully",
+        Data:    notifications,
+    })
+}
+
+// Create Nofication
+func (pc *PostController) CreateNotification(c *fiber.Ctx) error {
+    var req models.CreateNotificationRequest
+
+    if err := c.BodyParser(&req); err != nil {
+        return c.Status(fiber.StatusBadRequest).JSON(APIResponse.ErrorResponse{
+            Status:  fiber.StatusBadRequest,
+            Message: "Invalid request body",
+            Error:   "BadRequest",
+        })
+    }
+
+    notification, err := pc.service.CreateNotification(&req)
+    if err != nil {
+        return c.Status(fiber.StatusInternalServerError).JSON(APIResponse.ErrorResponse{
+            Status:  fiber.StatusInternalServerError,
+            Message: err.Error(),
+            Error:   "InternalServerError",
+        })
+    }
+
+    return c.Status(fiber.StatusCreated).JSON(APIResponse.SuccessResponse{
+        Status:  fiber.StatusCreated,
+        Message: "Notification created successfully",
+        Data:    notification,
+    })
+}

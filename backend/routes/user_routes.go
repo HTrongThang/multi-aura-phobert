@@ -20,4 +20,7 @@ func SetupUserRoutes(app *fiber.App) {
 	userGroup.Post("/login", controller.Login)
 	userGroup.Delete("/delete", middlewares.AuthMiddleware(), controller.DeleteUser)
 	userGroup.Put("/update", middlewares.AuthMiddleware(), controller.UpdateUser)
+	userGroup.Delete("/notification", middlewares.AuthMiddleware(), controller.DeleteNotification)
+	userGroup.Get("/notifications", middlewares.AuthMiddleware(), controller.GetNotifications)
+	userGroup.Post("/notification", middlewares.AuthMiddleware(), controller.CreateNotification)
 }
