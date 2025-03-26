@@ -9,6 +9,7 @@ import PostDetail from '../PostDetail/PostDetail';
 import soundWave from '../../assets/img/audio_wave.gif';
 
 function Post({ post, userData, deletePost }) {
+  console.log(deletePost);
   const userCurent = userData?.userID || null;  // Lấy userID của người dùng hiện tại
   const [showAllImages, setShowAllImages] = useState(false);
   const [commentText, setCommentText] = useState('');
@@ -228,8 +229,17 @@ function Post({ post, userData, deletePost }) {
 
       </div>
       {isDetailOpen && (
-        <PostDetail post={post} closeDetail={closeDetail} userCurent={userCurent} deletePost={deletePost} />
-      )}
+    <>
+        {console.log("deletePost in PostDetail:", deletePost)}  {/* In ra giá trị của deletePost */}
+        <PostDetail 
+            post={post} 
+            closeDetail={closeDetail} 
+            userCurent={userCurent} 
+            deletePost={deletePost} 
+        />
+    </>
+)}
+
       <div className="d-flex justify-content-between align-items-center" style={{ width: "85%" }}>
         <div className="d-flex">
 

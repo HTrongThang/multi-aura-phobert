@@ -7,6 +7,9 @@ import { format } from 'date-fns';
 import { FaHeart, FaReply } from 'react-icons/fa';
 import CommentsList from '../CommentsList/CommentsList';
 import { CommentPost, GetCommentByID, DeletePost, uploadVoiceComment } from '../../services/exploreSevice';
+import { getToxicComment } from '../../services/toxicService';
+import ErrorModal from '../../components/errorModal/ErrorModal';
+
 import soundWave from '../../assets/img/audio_wave.gif';
 
 // Component to display the post creator's information
@@ -44,6 +47,7 @@ function PostDetail({ post, closeDetail, userCurent, deletePost }) {
     const IsUserPost = post?.createdBy?.userID === userCurent;
     const [showInput, setShowInput] = useState(false);
     const [shareText, setShareText] = useState('');
+    const [showError, setShowError] = useState(false);
     // Handle play/pause audio
     const handlePlayPause = () => {
         const audio = audioRef.current;
@@ -92,25 +96,35 @@ function PostDetail({ post, closeDetail, userCurent, deletePost }) {
     }, [post._id]);
 
     const handleCommentSubmit = async (postID) => {
-
+        debugger;
         if (commentText.trim()) {
             try {
-
-                const response = await CommentPost(postID, commentText);
-                const commentid = response?.data?._id;
-                if (response.status === 201) {
-                    const uploadComemntVoice = await uploadVoiceComment(commentid, shareText);
-                    console.log(uploadComemntVoice);
-                    handleGetComment(postID);
-                    setCommentText('');
-                    setShareText('');
+                const responseCmt = await getToxicComment(commentText);
+    
+                if (responseCmt === 0) {
+                    setShowError(true); 
+                } else {
+                    try {
+                        const response = await CommentPost(postID, commentText);
+                        const commentid = response?.data?._id;
+    
+                        if (response.status === 201) {
+                            const uploadCommentVoice = await uploadVoiceComment(commentid, shareText);
+                            console.log(uploadCommentVoice);
+                            handleGetComment(postID);
+                            setCommentText('');
+                            setShareText('');
+                        }
+                    } catch (error) {
+                        console.error("Error posting comment:", error);
+                    }
                 }
-
             } catch (error) {
-                console.error("Error posting comment:", error);
+                console.log("Error checking toxic comment", error);
             }
         }
     };
+    
 
 
     const renderImages = (images) => {
@@ -228,6 +242,23 @@ function PostDetail({ post, closeDetail, userCurent, deletePost }) {
                                 <i className="fas fa-paper-plane"></i>
                             </button>
                         </div>
+                        {showError && (
+                            <ErrorModal
+                            title={
+                                <span>
+                                     Cảnh Báo: Bình luận không phù hợp
+                                </span>
+                            }
+                            description={
+                                <span>
+                                    <i className="fas fa-heart" style={{ color: '#ff4d4d', marginRight: '8px' }}></i>
+                                    Bình luận của bạn chứa ngôn ngữ không phù hợp. Vui lòng điều chỉnh lại để tuân thủ quy định cộng đồng.
+                                </span>
+                            }
+                            onClose={() => setShowError(false)}  // Đóng modal khi cần
+                        />
+         
+                    )}
                     </div>
                 </div>
             </div>

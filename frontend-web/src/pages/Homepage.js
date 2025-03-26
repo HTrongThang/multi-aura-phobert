@@ -9,6 +9,7 @@ import SuccessModal from '../components/SuccessModal/SuccessModal';
 import { createPost, deletePostByid, uploadImagePost } from '../services/exploreSevice';
 import { getNewsPosts } from '../services/searchService';
 
+
 function Homepage() {
     const [userData, setUserData] = useState(null);
     const [showModal, setShowModal] = useState(false);
