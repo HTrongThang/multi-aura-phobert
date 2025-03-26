@@ -96,7 +96,6 @@ function PostDetail({ post, closeDetail, userCurent, deletePost }) {
     }, [post._id]);
 
     const handleCommentSubmit = async (postID) => {
-        debugger;
         if (commentText.trim()) {
             try {
                 const responseCmt = await getToxicComment(commentText);
@@ -105,12 +104,15 @@ function PostDetail({ post, closeDetail, userCurent, deletePost }) {
                     setShowError(true); 
                 } else {
                     try {
+                        debugger;
                         const response = await CommentPost(postID, commentText);
                         const commentid = response?.data?._id;
     
                         if (response.status === 201) {
-                            const uploadCommentVoice = await uploadVoiceComment(commentid, shareText);
-                            console.log(uploadCommentVoice);
+                            if(shareText.trim())
+                            {
+                                const uploadCommentVoice = await uploadVoiceComment(commentid, shareText);
+                            }
                             handleGetComment(postID);
                             setCommentText('');
                             setShareText('');

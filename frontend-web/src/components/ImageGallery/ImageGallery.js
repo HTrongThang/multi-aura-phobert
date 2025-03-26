@@ -31,17 +31,23 @@ const ImageGallery = ({ posts, userData }) => {
 
     return (
         <div className="my-image-gallery">
-            {posts.map((post) => (
-                <div key={post._id} className="my-image-item">
-                    <img
-                        src={post.images[0].url}
-                        alt={`Post ${post._id}`}
-                        onClick={() => openDetail(post)} // Open post detail when clicked
-                        className="my-gallery-image"
-                    />
-                    <p className="my-image-title">{post.description}</p> {/* Tiêu đề bài viết */}
-                </div>
-            ))}
+  {posts.map((post) => (
+  <div key={post._id} className="my-image-item">
+    {/* Kiểm tra nếu images có phần tử và có URL */}
+    {post.images && post.images.length > 0 ? (
+      <img
+        src={post.images[0].url} // Lấy URL của hình ảnh
+        alt={`Post ${post._id}`}
+        onClick={() => openDetail(post)} // Open post detail when clicked
+        className="my-gallery-image"
+      />
+    ) : (
+      <p>No image available</p> // Nếu không có ảnh, hiển thị thông báo
+    )}
+
+    <p className="my-image-title">{post.description}</p> {/* Tiêu đề bài viết */}
+  </div>
+))}
 
             {isDetailOpen && currentPost && (
                 <PostDetail 
