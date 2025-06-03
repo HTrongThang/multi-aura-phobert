@@ -89,7 +89,7 @@ function MyProfile() {
       case 'images':
         return <ImageGallery posts={posts} userData={userData} />;
       case 'more':
-        return <div>Additional content here.</div>;
+        return <div className='more-tab'>Additional content here.</div>;
       default:
         return <Posts posts={posts} />;
     }

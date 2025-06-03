@@ -67,7 +67,7 @@ const MessageItem = ({ message, onClick, isSelected  }) => {
         <strong className="message-name">{nameDisplay}</strong>
 
         <div className="last-message-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p className="small message-last" style={{ color: "#e9edef", marginRight: '10px' }}>
+          <p className="small message-last" style={{ marginRight: '10px' }}>
             {lastMessage}
           </p>
 

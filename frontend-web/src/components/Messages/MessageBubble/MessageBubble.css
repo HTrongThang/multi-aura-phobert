@@ -6,15 +6,13 @@
 
 .messchat-item.sent {
   justify-content: flex-end; /* Tin nhắn của người khác bên phải */
-
 }
 
 .messchat-item.received {
   justify-content: flex-start; /* Tin nhắn của bạn bên trái */
-
 }
 .message-content {
-  background-color: #333;
+  background-color: var(--text-secondary, #a0a0a0);
   color: #fff;
   padding: 8px 10px; /* Điều chỉnh padding */
   border-radius: 21px !important;
@@ -22,17 +20,14 @@
   display: inline-block;
 }
 
-
 .messchat-item.received .message-content {
-  background-color: #262626; /* Màu tin nhắn của bạn */
+  background-color: var(--text-secondary, #a0a0a0); /* Màu tin nhắn của bạn */
   color: white;
-
 }
 
 .messchat-item.sent .message-content {
   background-color: #3797f0; /* Màu tin nhắn của người khác */
   color: white;
-
 }
 
 .avatar {
@@ -44,18 +39,17 @@
 
 .message-time {
   font-size: 0.75rem;
-  color: #bbb;
+  color: black;
   margin-top: 5px;
   display: block;
   text-align: right;
 }
 .message-text {
   font-size: 20px;
-  font-family: 'Raleway', sans-serif;
-  margin-bottom:0px ;
+  font-family: "Raleway", sans-serif;
+  margin-bottom: 0px;
   padding: 3px 5px;
 }
-
 
 .sender-name {
   font-weight: bold;
@@ -70,7 +64,7 @@
 
 #custom-scrollbar {
   max-height: 400px; /* Giới hạn chiều cao để kích hoạt cuộn */
-  overflow-y: auto;  /* Cho phép cuộn dọc */
+  overflow-y: auto; /* Cho phép cuộn dọc */
 }
 
 /* Tùy chỉnh thanh cuộn cho WebKit (Chrome, Safari, Edge) */

@@ -140,7 +140,6 @@ const CommentItem = ({ comment }) => {
 
   const renderReplies = () => {
     return replies.map((reply) => {
-      console.log(reply); // Đặt console.log đúng chỗ trước JSX
       return (
         <div key={reply._id} className="comment-reply">
           <div className="reply-avatar-container">
@@ -151,7 +150,7 @@ const CommentItem = ({ comment }) => {
             />
           </div>
           <div className="reply-content">
-            <p>{reply.createdBy.fullname}</p>
+            <p className='reply-author'>{reply.createdBy.fullname}</p>
             <p className="comment-time">{getTimeAgo(reply.createdAt)}</p>
             {reply.replyFor && (
               <div className="reply-for">
@@ -191,9 +190,9 @@ const CommentItem = ({ comment }) => {
       </div>
 
       <div className="comment-content">
-        <p>{comment.createdBy.fullname}</p>
+        <p className='comment-author'>{comment.createdBy.fullname}</p>
         <p className="comment-time">{getTimeAgo(comment.createdAt)}</p>
-        <p>{comment.text}</p>
+        <p className='comment-text'>{comment.text}</p>
         <div className="comment-voice-container">
           {comment.voice && (
             <div className="comment-audio-controls">

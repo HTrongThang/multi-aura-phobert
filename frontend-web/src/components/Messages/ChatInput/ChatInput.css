@@ -2,7 +2,11 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--border-color, #444444);
+}
+
+input {
+  background-color: var(--background-secondary, #000000);
 }
 
 .input-message {
@@ -26,4 +30,3 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
-

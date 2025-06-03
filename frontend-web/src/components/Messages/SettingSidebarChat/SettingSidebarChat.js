@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CreateGroupConversation from '../CreateGroupConversation/CreateGroupConversation';
+import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CreateGroupConversation from "../CreateGroupConversation/CreateGroupConversation";
 
 import {
   faBellSlash,
@@ -13,30 +13,45 @@ import {
   faUserPlus,
   faCogs,
   faChevronDown,
-  faChevronUp, faEllipsisV
-} from '@fortawesome/free-solid-svg-icons';
-import './SettingSidebarChat.css';
+  faChevronUp,
+  faEllipsisV,
+} from "@fortawesome/free-solid-svg-icons";
+import "./SettingSidebarChat.css";
 
-const SettingSidebarChat = ({ isOpen, currentChat, userCurent, dataFriend, onCreateGroup, onAddMenberGroup ,onRemoveMenberGroup}) => {
+const SettingSidebarChat = ({
+  isOpen,
+  currentChat,
+  userCurent,
+  dataFriend,
+  onCreateGroup,
+  onAddMenberGroup,
+  onRemoveMenberGroup,
+}) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedUserID, setSelectedUserID] = useState(null);
   const [showLeaveButton, setShowLeaveButton] = useState(false);
   const isUser = userCurent?.userID;
 
-  const isGroup = currentChat.conversation_type === 'Group';
+  const isGroup = currentChat.conversation_type === "Group";
   const currentUserID = userCurent ? userCurent.userID : null;
   let avatar;
   let nameDisplay;
 
   // Xử lý avatar và tên hiển thị
   if (isGroup) {
-    avatar = currentChat.thumb_group || '../static/media/Logo.af2b2f1b32b135402e38.png';
-    nameDisplay = currentChat.name_conversation || 'Multi Aura';
+    avatar =
+      currentChat.thumb_group ||
+      "../static/media/Logo.af2b2f1b32b135402e38.png";
+    nameDisplay = currentChat.name_conversation || "Multi Aura";
   } else {
-    const otherUser = currentChat.users.find((user) => user.userID !== currentUserID);
-    avatar = otherUser ? otherUser.avatar : '../static/media/Logo.af2b2f1b32b135402e38.png';
-    nameDisplay = otherUser ? otherUser.fullname : 'Unknown User';
+    const otherUser = currentChat.users.find(
+      (user) => user.userID !== currentUserID
+    );
+    avatar = otherUser
+      ? otherUser.avatar
+      : "../static/media/Logo.af2b2f1b32b135402e38.png";
+    nameDisplay = otherUser ? otherUser.fullname : "Unknown User";
   }
 
   // Mở modal
@@ -47,10 +62,7 @@ const SettingSidebarChat = ({ isOpen, currentChat, userCurent, dataFriend, onCre
   // Đóng modal
   const closeModal = () => {
     setModalVisible(false);
-
   };
-
-
 
   // Toggle dropdown để hiện/ẩn danh sách thành viên
   const toggleDropdown = () => {
@@ -58,25 +70,25 @@ const SettingSidebarChat = ({ isOpen, currentChat, userCurent, dataFriend, onCre
   };
   const handleLeaveGroup = (userID) => {
     onRemoveMenberGroup(userID);
-  }
+  };
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (event.target.closest('.ellipsis-btn') === null) {
+      if (event.target.closest(".ellipsis-btn") === null) {
         setShowLeaveButton(false); // Ẩn nút khi click ngoài
       }
     };
 
     // Thêm event listener khi component mount
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
     // Cleanup khi component unmount
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
   return (
-    <div className={`setting-sidebar-chat ${isOpen ? 'visible' : 'hidden'}`}>
+    <div className={`setting-sidebar-chat ${isOpen ? "visible" : "hidden"}`}>
       {/* Header */}
       <div className="header">
         <img src={avatar} alt="Avatar" />
@@ -118,7 +130,9 @@ const SettingSidebarChat = ({ isOpen, currentChat, userCurent, dataFriend, onCre
             <h4 className="section-title">
               <FontAwesomeIcon icon={faUsers} /> Danh sách thành viên
               <button onClick={toggleDropdown} className="dropdown-toggle-btn">
-                <FontAwesomeIcon icon={isDropdownOpen ? faChevronUp : faChevronDown} />
+                <FontAwesomeIcon
+                  icon={isDropdownOpen ? faChevronUp : faChevronDown}
+                />
               </button>
             </h4>
           </div>
@@ -129,7 +143,10 @@ const SettingSidebarChat = ({ isOpen, currentChat, userCurent, dataFriend, onCre
                   <div key={user.userID} className="member-item">
                     <div>
                       <img
-                        src={user.avatar || 'https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg'} // Nếu không có avatar thì sử dụng ảnh mặc định
+                        src={
+                          user.avatar ||
+                          "https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-8.jpg"
+                        } // Nếu không có avatar thì sử dụng ảnh mặc định
                         alt={user.fullname}
                         className="member-avatar"
                       />
@@ -138,7 +155,10 @@ const SettingSidebarChat = ({ isOpen, currentChat, userCurent, dataFriend, onCre
                     <div className="ellipsis-btn">
                       {user.userID === isUser && (
                         <>
-                          <FontAwesomeIcon icon={faEllipsisV} onClick={() => setShowLeaveButton(!showLeaveButton)} />
+                          <FontAwesomeIcon
+                            icon={faEllipsisV}
+                            onClick={() => setShowLeaveButton(!showLeaveButton)}
+                          />
                           {showLeaveButton && (
                             <button
                               className="leave-group" // Áp dụng class leave-group cho nút "Rời nhóm"
@@ -157,8 +177,6 @@ const SettingSidebarChat = ({ isOpen, currentChat, userCurent, dataFriend, onCre
               )}
             </div>
           )}
-
-
         </>
       )}
 

@@ -214,10 +214,7 @@ function ChatPage() {
       <div className={`container-fluid chat-page ${isSidebarOpen ? 'with-sidebar' : ''}`}>
         <div className="row">
           <div className="col-lg-3 col-md-3 col-sm-12 sidebar-wrapper"
-          style={{
-
-            background:"black"
-          }}>
+          >
             <Sidebar
               conversations={conversations}
               onSelectChat={handleSelectChatMessage}
@@ -231,7 +228,6 @@ function ChatPage() {
               display: 'flex',
               height: '90vh',
               padding: '0',
-              background:"black"
             }}
           >
 
@@ -240,7 +236,7 @@ function ChatPage() {
               style={{ flex: isSidebarOpen ? '0.7' : '1', transition: 'flex 0.3s ease' }}
             >
               {loadingChat ? (
-                <div>Loading chat...</div>
+                <div className='sub-chat'>Loading chat...</div>
               ) : currentChat ? (
                 <ChatContent
                   chat={currentChat} // Truyền currentChat xuống
@@ -253,7 +249,7 @@ function ChatPage() {
                 />
 
               ) : (
-                <div>Please select a chat to view</div>
+                <div className='sub-chat'>Please select a chat to view</div>
               )}
             </div>
 

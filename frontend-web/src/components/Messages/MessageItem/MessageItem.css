@@ -2,7 +2,7 @@
 .message-item {
   display: flex;
   align-items: center;
-  padding:  5px 10px  !important;
+  padding: 5px 10px !important;
   cursor: pointer;
   width: 100%;
   background-color: #1a1a1a;
@@ -16,10 +16,9 @@
   background-color: #444444 !important;
 }
 
-
 .message-item.selected {
   background-color: #3b3b3b !important; /* Nền nổi bật khi được chọn */
-  border-right:  5px solid white;
+  border-right: 5px solid white;
 }
 
 .avatar {
@@ -46,7 +45,7 @@
 
 .message-last {
   font-size: 14px;
-  color: #333;
+  color: var(--text-primary, #000000);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; /* Cắt nội dung dài bằng dấu ba chấm */
@@ -57,7 +56,7 @@
 }
 
 .message-item:hover .message-last {
-  color: #aaa; /* Thay đổi màu tin nhắn cuối khi hover */
+  color: var(--text-thirdary);
 }
 
 /* Phần container chính chứa cả danh sách chat và nội dung chat */
@@ -81,4 +80,3 @@
   padding: 20px;
   color: white;
 }
-

@@ -1,8 +1,7 @@
 .profile-nav__container {
-  border-top: 1px solid #ffffff;
+  border-top: 1px solid var(--text-primary, #ffffff);
   padding-top: 10px;
-  border-bottom: 1px solid #ffffff;
-
+  border-bottom: 1px solid var(--text-primary, #ffffff);
 }
 
 .profile-nav__tabs {
@@ -11,10 +10,11 @@
 
 .profile-nav__item {
   margin: 0 15px;
+  color: var(--text-primary, #ffffff);
 }
 
 .profile-nav__link {
-  color: #000;
+  color: var(--text-primary, #ffffff);
   font-size: 16px;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -26,10 +26,9 @@
 }
 
 .profile-nav__link--active {
-  color: white;
-  border-radius: 10px 10px 0px 0px; 
-  background-color: #000000; 
-  padding: 10px 15px; 
+  color: var(--text-primary, #ffffff);
+  border-radius: 10px 10px 0px 0px;
+  background-color: var(--background-secondary, #000000);
+  padding: 10px 15px;
   border-bottom: 5px solid #0768e7;
 }
-

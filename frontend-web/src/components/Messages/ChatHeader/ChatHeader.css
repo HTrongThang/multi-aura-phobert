@@ -3,11 +3,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: #000;
+  background-color: var(--background-thirdary, #000000);
   /* Màu nền đen */
   border-radius: 15px;
   /* Bo góc mềm mại */
-  color: #fff;
+  color: var(--text-primary, #212529);
   /* Màu chữ trắng */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   /* Hiệu ứng bóng đổ */
@@ -20,12 +20,11 @@
 .left-section {
   display: flex;
   align-items: center;
-}.menu-icon {
+}
+.menu-icon {
   color: #fff; /* Màu trắng mặc định */
   transition: color 0.3s ease; /* Hiệu ứng mượt */
 }
-
-
 
 .avatar {
   width: 50px;
@@ -41,7 +40,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: bold;
-  color: #ffffff;
+  color: var(--text-primary, #e9edef);
   /* Màu trắng cho tên người dùng */
 }
 
@@ -53,13 +52,16 @@
   margin-top: 2px;
 }
 
-
-
 .chat-header:hover {
-  background-color: #111;
+  background-color: var(--background-hover, #000000);
   /* Màu nền đậm hơn khi hover */
   transition: background-color 0.3s ease;
   /* Hiệu ứng chuyển màu mượt mà */
+}
+
+.chat-header:hover .user-info h3 {
+  color: #fff;
+  /* Màu trắng khi hover */
 }
 
 .menu-icon {
