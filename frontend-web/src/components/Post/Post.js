@@ -280,7 +280,7 @@ function Post({ post, userData, deletePost }) {
           >
             <FontAwesomeIcon
               icon={faHeart}
-              color={liked ? "red" : "white"}
+              color={liked ? "red" : "gray"}
               style={{ border: "none" }}
             />
 

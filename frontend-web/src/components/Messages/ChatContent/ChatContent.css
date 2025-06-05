@@ -56,7 +56,7 @@
   border: 1px solid #333;
   background-color: var(--background-secondary, #000000);
   margin-right: 10px;
-  color: white;
+  color: var(--text-primary, #000000);
 }
 
 .chat-input button {
