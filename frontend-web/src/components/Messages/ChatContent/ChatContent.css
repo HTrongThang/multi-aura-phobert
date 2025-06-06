@@ -9,7 +9,6 @@
   align-items: center;
   border-bottom: 1px solid #333;
   border-top: 1px solid #333;
-
 }
 
 .avatar {
@@ -40,7 +39,7 @@
 }
 
 .message-content {
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   padding: 10px;
   border-radius: 10px;
 }
@@ -48,7 +47,6 @@
 .chat-input {
   display: flex;
   padding: 10px;
-
 }
 
 .chat-input input {
@@ -56,19 +54,20 @@
   padding: 10px;
   border-radius: 20px;
   border: 1px solid #333;
-  background-color: black;
+  background-color: var(--background-secondary, #000000);
   margin-right: 10px;
-  color: white;
+  color: var(--text-primary, #000000);
 }
 
 .chat-input button {
   padding: 10px 20px;
-  background-color: black;
-  color: white;
+  background-color: var(--background-secondary, #000000);
+  color: var(--text-primary, #e9edef);
   border: 1px solid white;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .chat-input button:hover {
@@ -76,7 +75,6 @@
   color: black;
   border-color: none;
 }
-
 
 .no-message-container {
   text-align: center;
@@ -92,7 +90,7 @@
   font-size: 18px;
   color: #333;
   line-height: 1.6;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .no-message-container:hover {
@@ -105,7 +103,7 @@
 }
 
 .chat-messages::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
 
 .chat-messages::-webkit-scrollbar-track {
@@ -116,8 +114,8 @@
 .chat-messages::-webkit-scrollbar-thumb {
   background-color: white; /* Màu của phần kéo */
   border-radius: 20px; /* Bo góc phần kéo */
-  border-top: 1px solid white ;
-  border-bottom: 1px solid white ;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
@@ -158,4 +156,3 @@
 .setting-sidebar-chat.visible {
   transform: translateX(0); /* Hiển thị sidebar */
 }
-

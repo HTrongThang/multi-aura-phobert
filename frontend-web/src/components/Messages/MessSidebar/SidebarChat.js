@@ -68,7 +68,7 @@ function SidebarChat({ conversations = [], onSelectChat, newMessageItems, select
   return (
     <div className="sidebar-container">
       <div className="sidebar-header">
-        <h5 style={{ color: "white" }}>Messages</h5>
+        <h5 >Messages</h5>
 
         {!isSearchVisible && (
           <FaSearch

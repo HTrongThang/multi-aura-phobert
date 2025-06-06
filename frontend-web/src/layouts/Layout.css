@@ -1,18 +1,31 @@
+/* Layout.css */
 .layout {
   display: flex;
   margin: 0;
+  /* Toàn bộ layout có thể cũng nên có màu nền và màu chữ mặc định từ theme */
+  /* background-color: var(--background-primary); */ /* Ví dụ */
+  /* color: var(--text-primary); */ /* Ví dụ */
+  min-height: 100vh; /* Đảm bảo layout chiếm toàn bộ chiều cao màn hình */
 }
 
 .main-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  
+  /* Thêm transition để chuyển đổi màu nền mượt mà nếu Layout cũng đổi màu */
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
 }
 
 .content-area {
-  background-color: black !important  ; /* Màu nền đen tối */
-  color: #fff; /* Màu chữ trắng */
+  /* background-color: black !important; */ /* Màu nền cũ */
+  /* color: #fff; */ /* Màu chữ cũ */
+
+  /* Sử dụng biến CSS cho màu nền và màu chữ */
+  background-color: var(--background-primary) !important; /* Hoặc var(--background-secondary) nếu bạn muốn màu nền khác cho vùng nội dung */
+  color: var(--text-primary) !important; /* Thêm !important nếu cần để ghi đè các style khác, nhưng nên hạn chế */
+  
   flex-grow: 1;
   margin: 0;
+  padding: 20px; /* Thêm padding để nội dung không sát viền */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Thêm transition cho mượt */
 }

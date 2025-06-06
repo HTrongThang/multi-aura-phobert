@@ -1,7 +1,7 @@
-import React from 'react';
-import Sidebar from '../components/Sidebar/Sidebar';
-import Header from '../components/Header/Header';
-import './Layout.css';
+import React from "react";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Header from "../components/Header/Header";
+import "./Layout.css";
 
 function Layout({ children, userData }) {
   return (
@@ -9,9 +9,7 @@ function Layout({ children, userData }) {
       <Sidebar />
       <div className="main-content">
         <Header userData={userData} />
-        <div className="content-area">
-          {children}
-        </div>
+        <div className="content-area">{children}</div>
       </div>
     </div>
   );

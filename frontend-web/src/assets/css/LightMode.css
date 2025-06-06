@@ -1,0 +1,129 @@
+[data-theme="light"] {
+  --background-primary: #ffffff;
+  --background-secondary: #dee0e2;
+  --background-thirdary: #f8f9fa;
+  --background-hover: #c7c3c3;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-thirdary: #ffffff;
+  --border-color: #000000;
+  --accent-color: #007bff;
+  --floating-button-background: #007bff; /* Màu accent cho button nổi */
+  --floating-button-text: #ffffff;
+  --floating-button-border: #0056b3;
+  --floating-button-background-hover: #0056b3;
+
+  --modal-content-background: #ffffff;
+  --modal-content-text: #212529; /* Màu text chính trên nền modal sáng */
+  --modal-overlay-background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Giữ nguyên hoặc thay đổi nhẹ nếu muốn */
+
+  --button-primary-background: #007bff; /* Giống accent-color */
+  --button-primary-text: #ffffff;
+  --button-primary-background-hover: #0056b3; /* Đậm hơn accent-color */
+  --header-background: #ffffff;
+  --header-text-color: var(--text-primary, #212529);
+  --header-border-color: var(--border-color, #dee2e6);
+
+  --avatar-border-color: var(--accent-color, #007bff);
+
+  --dropdown-background: #ffffff;
+  --dropdown-text-color: var(--text-primary, #212529);
+  --dropdown-border-color: var(--border-color, #dee2e6);
+  --dropdown-item-hover-background: #e9ecef;
+  --post-background: var(--background-secondary, #f8f9fa);
+  --post-text-color: var(--text-primary, #212529);
+  --post-avatar-border: var(--border-color, #dee2e6); /* Hoặc màu nhấn nhẹ */
+  --post-icon-button-color: var(--text-secondary, #6c757d);
+  --post-icon-button-hover-color: var(--accent-color, #007bff);
+
+  --comment-input-background: #ffffff;
+  --comment-input-text: var(--text-primary, #212529);
+  --comment-input-border: var(--border-color, #dee2e6);
+  --comment-input-border-focus: var(--accent-color, #007bff);
+  --comment-input-placeholder-color: #999999;
+
+  --comment-submit-button-background: var(--accent-color, #007bff);
+  --comment-submit-button-text: var(--text-on-accent, #ffffff);
+  --comment-submit-button-hover-background: var(--accent-color-hover, #0056b3);
+  --comment-submit-button-disabled-background: #ced4da;
+  --comment-submit-button-disabled-text: #6c757d;
+
+  --post-detail-background: var(--background-primary, #ffffff);
+  --post-detail-image-area-background: #f0f0f0; /* Nền cho khu vực ảnh nếu ảnh không full */
+  --post-detail-text-color: var(--text-primary, #212529);
+  --post-detail-meta-text-color: var(--text-secondary, #6c757d);
+  --comment-bar-background: var(--background-secondary, #f8f9fa);
+  --comment-bar-border-top: var(--border-color, #dee2e6);
+}
+
+/* Định nghĩa màu cho dark mode bằng cách sử dụng một attribute trên thẻ <html> hoặc <body> */
+[data-theme="dark"] {
+  --background-primary: #1a1a1a;
+  --background-secondary: #2c2c2c;
+  --background-thỉrdary: #000000;
+  --background-hover: #000000;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-thirdary: #ffffff;
+  --border-color: #444444;
+  --accent-color: #61dafb;
+  --floating-button-background: #61dafb; /* Màu accent cho button nổi (dark theme) */
+  --floating-button-text: #1a1a1a; /* Text đậm trên nền sáng của button */
+  --floating-button-border: #1e90ff;
+  --floating-button-background-hover: #1e90ff;
+
+  --modal-content-background: #2c2c2c; /* Nền tối cho modal */
+  --modal-content-text: #e0e0e0; /* Màu text chính trên nền modal tối */
+  --modal-overlay-background: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Có thể làm đậm hơn một chút */
+
+  --button-primary-background: #61dafb; /* Giống accent-color (dark theme) */
+  --button-primary-text: #1a1a1a;
+  --button-primary-background-hover: #1e90ff; /* Đậm hơn accent-color (dark theme) */
+  --header-background: #1a1a1a;
+  --header-text-color: var(--text-primary, #e0e0e0);
+  --header-border-color: var(--border-color, #444444);
+
+  --avatar-border-color: var(--accent-color, #61dafb);
+
+  --dropdown-background: #2c2c2c;
+  --dropdown-text-color: var(--text-primary, #e0e0e0);
+  --dropdown-border-color: var(--border-color, #444444);
+  --dropdown-item-hover-background: #3d3d3d;
+  --post-background: var(--background-secondary, #2c2c2c);
+  --post-text-color: var(--text-primary, #e0e0e0);
+  --post-avatar-border: var(--border-color, #444444); /* Hoặc màu nhấn nhẹ */
+  --post-icon-button-color: var(--text-secondary, #a0a0a0);
+  --post-icon-button-hover-color: var(--accent-color, #61dafb);
+
+  --comment-input-background: #1a1a1a; /* Hoặc var(--background-primary) */
+  --comment-input-text: var(--text-primary, #e0e0e0);
+  --comment-input-border: #555555;
+  --comment-input-border-focus: var(--accent-color, #61dafb);
+  --comment-input-placeholder-color: #777777;
+
+  --comment-submit-button-background: var(--accent-color, #61dafb);
+  --comment-submit-button-text: var(
+    --text-on-accent,
+    #1a1a1a
+  ); /* Đảm bảo tương phản */
+  --comment-submit-button-hover-background: var(--accent-color-hover, #1e90ff);
+  --comment-submit-button-disabled-background: #343a40;
+  --comment-submit-button-disabled-text: #6c757d;
+
+  --post-detail-background: var(--background-primary, #1a1a1a);
+  --post-detail-image-area-background: #000000;
+  --post-detail-text-color: var(--text-primary, #e0e0e0);
+  --post-detail-meta-text-color: var(--text-secondary, #a0a0a0);
+  --comment-bar-background: var(--background-secondary, #2c2c2c);
+  --comment-bar-border-top: var(--border-color, #444444);
+}

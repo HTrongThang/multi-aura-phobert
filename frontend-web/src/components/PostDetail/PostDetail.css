@@ -1,367 +1,405 @@
-/* General Styles */
+/* PostDetail.css */
 .post-detail-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(
+    --modal-overlay-background,
+    rgba(0, 0, 0, 0.8)
+  ); /* Thay thế */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Giữ z-index này hoặc quản lý tập trung */
+  padding: 20px;
+  box-sizing: border-box; /* Thêm để padding không ảnh hưởng kích thước tổng */
 }
 
 .post-detail-container {
-    display: flex;
-    background-color: black;
-    border-radius: 12px;
-    overflow: hidden;
-    width: 100%;
-    max-width: 1200px;
-    height: 90%;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    flex-direction: row;
-    position: relative;
+  display: flex;
+  background-color: var(--post-detail-background, black); /* Thay thế */
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  height: 90%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Shadow có thể cần biến riêng */
+  flex-direction: row;
+  position: relative;
+  transition: background-color 0.3s ease;
 }
 
 .post-detail-left,
 .post-detail-right {
-    padding: 10px;
-    flex: 1;
+  padding: 15px; /* Tăng padding */
+  flex: 1;
+  overflow-y: auto; /* Cho phép cuộn nếu nội dung dài */
 }
 
-/* Image Section */
 .post-detail-left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(
+    --post-detail-image-area-background,
+    black
+  ); /* Thay thế */
+  border-right: 1px solid var(--border-color, #333); /* Thêm đường phân cách */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.post-detail-left img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 12px;
+.post-detail-left img,
+.react-image-gallery__image img {
+  /* Áp dụng cho cả ảnh gallery */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px; /* Bo góc nhẹ cho ảnh */
 }
+
 
 /* Post Information Section */
 
 .post-detail-right {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    color: #fff;
+  display: flex;
+  flex-direction: column;
+  color: var(--post-detail-text-color, #fff); /* Thay thế */
+  transition: color 0.3s ease;
 }
 
 .post-detail-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid gray;
-    color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color, gray); /* Thay thế */
+  color: var(--post-detail-text-color, #fff); /* Thay thế */
+  padding-bottom: 10px; /* Thêm padding dưới */
+  margin-bottom: 10px; /* Thêm margin dưới */
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 .post-detail-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 50px; /* Giảm kích thước avatar một chút */
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--post-avatar-border, var(--border-color)); /* Dùng biến từ Post.css */
 }
 
 .post-detail-header-right {
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-    padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  /* padding-top: 10px; */ /* Bỏ nếu không cần thiết */
+  padding-left: 10px;
 }
 
 .post-detail-username {
-    font-weight: bold;
-    font-size: 20px;
-    margin: 0px;
+  font-weight: bold;
+  font-size: 18px; /* Giảm font size */
+  margin: 0px;
+  color: var(--post-detail-text-color, #fff);
 }
 
 .post-detail-fullname {
-    font-size: 18px;
-    color: #bbb;
+  /* Đây là hiển thị ngày tháng */
+  font-size: 14px; /* Giảm font size */
+  color: var(--post-detail-meta-text-color, #bbb); /* Thay thế */
 }
 
 .post-detail-header-actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .post-detail-ellipsis {
-    font-size: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(
+    --post-icon-button-color,
+    var(--text-secondary)
+  ); /* Dùng biến icon button */
+  transition: color 0.3s ease;
 }
 
 .post-detail-ellipsis:hover {
-    color: #007bff;
+  color: var(
+    --post-icon-button-hover-color,
+    var(--accent-color)
+  ); /* Dùng biến icon button hover */
 }
 
-/* Post Description */
 .post-detail-description {
-    display: flex;
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Container cho mô tả và audio */
+  display: flex; /* Cho phép audio và text nằm cạnh nhau nếu cần */
+  flex-direction: column; /* Hoặc column nếu muốn audio dưới text */
+  color: var(--post-detail-text-color, #333); /* Thay thế */
+  padding: 10px 0; /* Điều chỉnh padding */
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */ /* Bỏ shadow nếu không cần */
+  word-wrap: break-word;
+  margin-bottom: 15px;
 }
 
-.audio-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 90px;
-
+.post-detail-description .audio-controls {
+  /* Style riêng cho audio control trong detail */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* width: 90px; */ /* Bỏ width cố định */
+  margin-top: 10px; /* Thêm margin nếu audio dưới text */
 }
 
-.audio-btn {
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: flex;
-    justify-content: center;
-    width: 90px;
-
-
-    align-items: center;
+.post-detail-description .audio-btn {
+  /* Style riêng cho audio button trong detail */
+  border: none;
+  padding: 5px; /* Giảm padding */
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--post-icon-button-color, var(--text-primary)); /* Màu icon */
 }
 
-.audio-btn img {
-    width: 90px;
-    height: auto;
+.post-detail-description .audio-btn img, /* Nếu dùng ảnh cho icon */
+.post-detail-description .audio-btn svg  /* Nếu dùng react-icons */ {
+  width: 30px; /* Kích thước icon */
+  height: 30px;
 }
 
-.audio-btn:hover {
-    background-color: #45a049;
+.post-detail-description .audio-btn:hover {
+  background-color: var(
+    --post-icon-button-hover-color,
+    rgba(var(--text-primary-rgb), 0.1)
+  ); /* Màu nền nhẹ khi hover */
 }
 
 .post-description-details {
-    color: white;
-    margin: 0px;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    align-items: center;
+  /* Text mô tả */
+  color: var(--post-detail-text-color, white); /* Thay thế */
+  margin: 0px;
+  font-size: 16px;
+  line-height: 1.6; /* Tăng line height */
 }
 
-.audio-btn svg {
-    color: white;
+.post-detail-description audio {
+  /* Ẩn player mặc định */
+  display: none;
 }
 
-audio {
-    display: none;
+/* Image Gallery Styles - react-image-gallery */
+.react-image-gallery {
+  border-radius: 8px; /* Bo góc cho gallery */
+  overflow: hidden; /* Đảm bảo các phần tử con không tràn ra ngoài */
 }
-
-/* Image Gallery Styles */
 .react-image-gallery__image {
-    border-radius: 12px;
-    margin-bottom: 20px;
+  border-radius: 0; /* Bỏ border-radius riêng nếu gallery đã có */
+  margin-bottom: 0; /* Bỏ margin bottom nếu không cần */
 }
-
 .react-image-gallery__image img {
-    border-radius: 12px;
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-    max-height: 80vh;
+  border-radius: 0; /* Bỏ border-radius riêng */
+  object-fit: contain; /* Đảm bảo xem toàn bộ ảnh */
+  width: 100%;
+  height: auto;
+  max-height: calc(
+    0.9 * (100vh - 40px) * 0.5
+  ); /* Chiều cao tối đa cho ảnh, ví dụ 50% của phần left */
+  background-color: var(
+    --post-detail-image-area-background,
+    #000
+  ); /* Nền cho vùng ảnh */
+}
+.react-image-gallery__icon:hover,
+.react-image-gallery__left-nav:hover,
+.react-image-gallery__right-nav:hover {
+  color: var(
+    --accent-color,
+    #007bff
+  ) !important; /* Màu accent cho icon gallery khi hover */
+}
+.react-image-gallery__icon,
+.react-image-gallery__left-nav,
+.react-image-gallery__right-nav {
+  color: var(
+    --post-icon-button-color,
+    var(--text-secondary)
+  ) !important; /* Màu icon gallery */
+  padding: 10px !important; /* Tăng vùng bấm */
+  font-size: 2em !important; /* Tăng kích thước icon */
+}
+.react-image-gallery__bullets .react-image-gallery__bullet {
+  background: var(--text-secondary, gray) !important;
+  border: 1px solid var(--border-color, #ccc) !important;
+  box-shadow: none !important;
+}
+.react-image-gallery__bullets .react-image-gallery__bullet.active {
+  background: var(--accent-color, #007bff) !important;
+  border: 1px solid var(--accent-color, #007bff) !important;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .post-detail-container {
-        flex-direction: column;
-        height: 95%;
-        width: 95%;
-    }
-
-    .post-detail-left,
-    .post-detail-right {
-        width: 80%;
-    }
-
-    .post-detail-description {
-        font-size: 16px;
-    }
-
-    .comment-input {
-        font-size: 15px;
-    }
-
-    .comment-submit-button {
-        padding: 8px 12px;
-    }
-}
-
-.react-image-gallery__icon {
-    width: 15px !important;
-    height: 15px !important;
-}
-
-.react-image-gallery__svg {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-.image-gallery-svg {
-    width: 40px !important;
-    height: 40px !important;
-}
-
-
-@media (max-width: 768px) {
-    .post-detail-comment {
-        padding: 10px;
-    }
-
-    .post-detail-comment {
-        padding: 10px;
-    }
-
-    .comment-username {
-        font-size: 13px;
-    }
-
-    .comment-time {
-        font-size: 11px;
-    }
-
-   
-}
-
+/* Add Comment Section Footer */
 .post-detail-add-comment {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 50%;
-    background-color: black;
-    padding: 10px 0;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-    border-top: 1px solid white;
+  position: absolute; /* Hoặc sticky nếu muốn nó luôn ở cuối phần right khi cuộn */
+  bottom: 0;
+  left: 0; /* Để nó chiếm hết chiều rộng của .post-detail-right */
+  right: 0; /* Để nó chiếm hết chiều rộng của .post-detail-right */
+  width: auto; /* Bỏ width: 50% */
+  background-color: var(--comment-bar-background, black); /* Thay thế */
+  padding: 10px 15px; /* Thêm padding ngang */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Giảm gap */
+  /* box-shadow: 0 -2px 5px rgba(0,0,0,0.1); */ /* Bỏ shadow hoặc dùng biến */
+  border-top: 1px solid var(--comment-bar-border-top, white); /* Thay thế */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.comment-input-container {
-    width: 100%;
-
-}
-
+.input-container, /* Gộp style chung */
+.comment-input-container,
 .share-input-container {
-    width: 100%;
-}
-
-.input-container {
-    width: 100%;
-}
-
-.share-input {
-    border-bottom: 1px solid white !important;
-    border-radius: 0px !important;
+  width: 100%;
+  position: relative; /* Cho nút gửi comment */
 }
 
 .comment-input,
 .share-input {
-    border: none;
-    flex: 1;
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s ease;
-    background-color: black;
-    padding-right: 30px;
-    width: 100%;
+  /* Style chung cho input */
+  border: 1px solid var(--comment-input-border, #555); /* Thêm border cho dễ nhìn */
+  flex: 1;
+  color: var(--comment-input-text, white); /* Thay thế */
+  padding: 10px 45px 10px 12px; /* Tăng padding phải cho nút gửi, giảm padding top/bottom */
+  border-radius: 20px; /* Bo tròn nhiều hơn */
+  font-size: 15px; /* Giảm font size */
+  outline: none;
+  background-color: var(--comment-input-background, black); /* Thay thế */
+  width: 100%; /* Chiếm hết chiều rộng */
+  transition: border-color 0.3s ease, background-color 0.3s ease,
+    color 0.3s ease;
+}
+.comment-input:focus,
+.share-input:focus {
+  border-color: var(
+    --comment-input-border-focus,
+    var(--accent-color)
+  ); /* Border focus */
+}
+.comment-input::placeholder,
+.share-input::placeholder {
+  color: var(--comment-input-placeholder-color, #bbb);
 }
 
 .comment-submit-button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #007bff;
-    transition: color 0.3s ease;
+  position: absolute;
+  right: 5px; /* Điều chỉnh vị trí nút gửi */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; /* Kích thước icon gửi */
+  color: var(--accent-color, #007bff); /* Thay thế */
+  padding: 5px; /* Thêm padding cho dễ bấm */
+  transition: color 0.3s ease;
 }
 
 .show-Input-Comment {
-    position: absolute;
-    right: 50px;
-    top: 50%;
-    border-bottom: 1px solid white;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: white;
-    transition: color 0.3s ease;
+  /* Nút icon keyboard */
+  position: absolute;
+  right: 40px; /* Điều chỉnh vị trí */
+  top: 50%;
+  /* border-bottom: 1px solid var(--comment-input-border, white); */ /* Bỏ border này */
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; /* Kích thước icon */
+  color: var(--post-icon-button-color, white); /* Thay thế */
+  padding: 5px; /* Thêm padding */
+  transition: color 0.3s ease;
 }
-
-.comment-submit-button:hover {
-    color: #0056b3;
+.show-Input-Comment:hover,
+.comment-submit-button:hover:not(:disabled) {
+  color: var(--accent-color-hover, #0056b3); /* Thay thế */
 }
 
 .fas {
-    font-size: 20px;
-}
-
-.comment-submit-button.active {
-    color: white;
-    opacity: 1;
+  /* Dùng cho icon FontAwesome nếu có */
+  font-size: 20px;
 }
 
 .comment-submit-button:disabled {
-    cursor: not-allowed;
-    color: #413f3f;
-}
-
-.large-image {
-    max-width: 100%;
-}
-
-.resize-image {
-    max-width: 100% !important;
-    width: 100% !important;
-    height: auto;
-    object-fit: cover;
-    background-color: #f0f0f0;
-}
-
-.post-detail-header-title {
-    display: flex;
-}
-
-.post-detail-header-left {
-    display: flex;
-    align-items: center;
-}
-
-.post-detail-header-actions {
-    position: relative;
-}
-
-.post-detail-ellipsis {
-    cursor: pointer;
+  cursor: not-allowed;
+  color: var(--button-disabled-text-color, #413f3f); /* Thay thế */
 }
 
 .post-menu {
-    position: absolute;
-    top: 55px;
-    z-index: 2000;
-    left: 90%;
+  /* Menu Xóa bài */
+  position: absolute;
+  top: 50px; /* Điều chỉnh vị trí so với nút ellipsis */
+  right: 15px; /* Sát lề phải của header */
+  z-index: 1001; /* Cao hơn overlay của PostDetail một chút */
+  background-color: var(
+    --dropdown-background,
+    var(--background-secondary)
+  ); /* Dùng biến dropdown */
+  border: 1px solid var(--dropdown-border-color, var(--border-color));
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+.post-menu button.delete-button {
+  background-color: transparent;
+  color: var(--text-danger, red); /* Hoặc một biến màu cảnh báo */
+  border: none;
+  padding: 8px 15px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.post-menu button.delete-button:hover {
+  background-color: var(
+    --dropdown-item-hover-background,
+    rgba(var(--text-danger-rgb), 0.1)
+  ); /* Màu hover nhẹ */
+}
+
+/* Responsive Adjustments - giữ nguyên hoặc điều chỉnh lại nếu cần */
+@media (max-width: 768px) {
+  .post-detail-container {
+    flex-direction: column;
+    height: auto; /* Cho phép chiều cao tự động */
+    max-height: 95vh; /* Giới hạn chiều cao tối đa */
+    width: 95%;
+  }
+
+  .post-detail-left,
+  .post-detail-right {
+    width: 100%; /* Chiếm toàn bộ chiều rộng trong flex column */
+    flex: none; /* Bỏ flex:1 */
+  }
+  .post-detail-left {
+    max-height: 50vh; /* Giới hạn chiều cao phần ảnh */
+    border-right: none; /* Bỏ border khi xếp dọc */
+    border-bottom: 1px solid var(--border-color, #333); /* Thêm border dưới */
+  }
+  .post-detail-right {
+    max-height: calc(
+      95vh - 50vh - 20px
+    ); /* Chiều cao còn lại cho phần comment, trừ padding */
+  }
+
+  .post-detail-description {
+    font-size: 15px; /* Giảm font một chút */
+  }
+
+  .comment-input,
+  .share-input {
+    font-size: 14px;
+  }
+  .post-detail-add-comment {
+    position: relative; /* Bỏ absolute để nó nằm cuối flow */
+  }
 }
