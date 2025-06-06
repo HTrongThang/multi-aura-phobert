@@ -59,6 +59,9 @@
   border-radius: 8px; /* Bo góc nhẹ cho ảnh */
 }
 
+
+/* Post Information Section */
+
 .post-detail-right {
   display: flex;
   flex-direction: column;

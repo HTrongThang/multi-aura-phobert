@@ -100,7 +100,7 @@ function PostDetail({ post, closeDetail, userCurent, deletePost }) {
             try {
                 const responseCmt = await getToxicComment(commentText);
     
-                if (responseCmt === 0) {
+                if (responseCmt === 2) {
                     setShowError(true); 
                 } else {
                     try {
