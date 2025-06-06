@@ -81,8 +81,16 @@ const FriendItem = ({ friend }) => {
 
       {showModal && (
         <div className="modal-overlay">
-          <div className="modal-content">
-            <p>Bạn có chắc muốn hủy kết bạn với {friend.fullname} không?</p>
+          <div
+            className="modal-content"
+            style={{
+              backgroundColor: "var(--text-primary)",
+              color: "var(--background-primary)",
+            }}
+          >
+            <p style={{ color: "var(--background-primary)" }}>
+              Bạn có chắc muốn hủy kết bạn với {friend.fullname} không?
+            </p>
             <button
               className="btn btn-danger me-2"
               onClick={handleUnfriend}
