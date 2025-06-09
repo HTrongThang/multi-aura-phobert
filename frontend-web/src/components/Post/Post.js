@@ -22,6 +22,7 @@ import {
   uploadVoiceComment,
 } from "../../services/exploreSevice";
 import PostDetail from "../PostDetail/PostDetail";
+import Gallery from "react-image-gallery";
 import soundWave from "../../assets/img/audio_wave.gif";
 
 function Post({ post, userData, deletePost }) {
@@ -42,6 +43,7 @@ function Post({ post, userData, deletePost }) {
   const [showInput, setShowInput] = useState(false);
   const audioRef = useRef(null);
   const [shareText, setShareText] = useState("");
+  const numberOfImages = post.images.length;
   const openDetail = () => {
     setIsDetailOpen(true);
   };
@@ -86,42 +88,45 @@ function Post({ post, userData, deletePost }) {
 
     if (imageCount === 1) {
       return (
-        <img
-          src={post.images[0].url}
-          alt="Post"
-          className="img-post img-fluid rounded mb-4"
-          style={{
-            width: "600px",
-            height: "auto",
-            objectFit: "contain",
-            display: "block",
-          }}
-        />
-      );
-    }
-    if (imageCount === 2) {
-      return (
-        <div className="image-row d-flex">
-          {post.images.map((image, index) => (
-            <img
-              key={index}
-              src={image.url}
-              alt={`Post ${index}`}
-              className="img-fluid rounded"
-              style={{
-                width: "60%",
-                marginRight: index === 0 ? "4%" : "0",
-                objectFit: "cover", // Đảm bảo ảnh được cắt bớt phù hợp
-              }}
-            />
-          ))}
+        <div className="img-post">
+          <img
+            src={post.images[0].url}
+            alt="Post"
+            className="img-fluid rounded mb-4"
+            onClick={openDetail}
+            style={{
+              width: "600px",
+              height: "auto",
+              objectFit: "contain",
+              display: "block",
+            }}
+          />
         </div>
       );
     }
-    if (imageCount > 2) {
+    // if (imageCount === 2) {
+    //   return (
+    //     <div className="image-row d-flex">
+    //       {post.images.map((image, index) => (
+    //         <img
+    //           key={index}
+    //           src={image.url}
+    //           alt={`Post ${index}`}
+    //           className="img-fluid rounded"
+    //           style={{
+    //             width: "60%",
+    //             marginRight: index === 0 ? "4%" : "0",
+    //             objectFit: "cover", // Đảm bảo ảnh được cắt bớt phù hợp
+    //           }}
+    //         />
+    //       ))}
+    //     </div>
+    //   );
+    // }
+    if (imageCount > 1) {
       return (
         <div className="image-row">
-          <Carousel>
+          {/* <Carousel>
             {post.images.map((image, index) => {
               return (
                 <Carousel.Item key={index}>
@@ -139,7 +144,18 @@ function Post({ post, userData, deletePost }) {
                 </Carousel.Item>
               );
             })}
-          </Carousel>
+          </Carousel> */}
+          <Gallery
+            items={post.images.map((image) => ({
+              original: image.url,
+              thumbnail: image.url,
+              originalClass: "resize-image",
+            }))}
+            showThumbnails={false}
+            showFullscreenButton={false}
+            showPlayButton={false}
+            onClick={openDetail}
+          />
         </div>
       );
     }
@@ -195,7 +211,12 @@ function Post({ post, userData, deletePost }) {
   };
   return (
     <div className="post p-3 mb-4 rounded shadow-sm text-white">
-      <div className="post-header" onClick={openDetail}>
+      <div
+        className="post-header"
+        {...(numberOfImages === 0
+          ? { onClick: openDetail, style: { cursor: "pointer" } }
+          : {})}
+      >
         <div
           className="d-flex align-items-center mb-2"
           style={{ height: "100%" }}
@@ -269,7 +290,7 @@ function Post({ post, userData, deletePost }) {
       )}
 
       <div
-        className="d-flex justify-content-between align-items-center"
+        className="d-flex align-items-center box-items"
         style={{ width: "85%" }}
       >
         <div className="d-flex">
@@ -305,13 +326,13 @@ function Post({ post, userData, deletePost }) {
             <FaKeyboard size={20} />
             <span className="likes-count" style={{ border: "none" }}></span>
           </button>
+          <button className="btn btn-link" onClick={handleBookmark}>
+            <FontAwesomeIcon
+              icon={faBookmark}
+              color={bookmarked ? "yellow" : "white"}
+            />
+          </button>
         </div>
-        <button className="btn btn-link" onClick={handleBookmark}>
-          <FontAwesomeIcon
-            icon={faBookmark}
-            color={bookmarked ? "yellow" : "white"}
-          />
-        </button>
       </div>
       {showInput && (
         <input

@@ -1,28 +1,34 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FaHeart, FaReply } from 'react-icons/fa';
-import './CommentItem.css';
-import { addReplyComment, LikeComment, unLikeComment, uploadVoiceComment, uploadVoiceReply } from '../../services/exploreSevice';
-import soundWave from '../../assets/img/audio_wave.gif';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import { FaHeart, FaReply } from "react-icons/fa";
+import "./CommentItem.css";
+import {
+  addReplyComment,
+  LikeComment,
+  unLikeComment,
+  uploadVoiceComment,
+  uploadVoiceReply,
+} from "../../services/exploreSevice";
+import soundWave from "../../assets/img/audio_wave.gif";
+import { Link } from "react-router-dom";
 const CommentItem = ({ comment }) => {
   const [likesCount, setLikesCount] = useState(comment?.likedBy.length || 0);
   const [showReplies, setShowReplies] = useState(false);
   const [likedComments, setLikedComments] = useState({});
   const [isReplying, setIsReplying] = useState(false);
-  const [replyText, setReplyText] = useState('');
+  const [replyText, setReplyText] = useState("");
   const replies = Array.isArray(comment.replies) ? comment.replies : [];
   const [isPlaying, setIsPlaying] = useState(false); // Moved inside the component
-  const audioRef = useRef(null);  // Audio ref
+  const audioRef = useRef(null); // Audio ref
   const [isFocusing, setIsFocusing] = useState(false);
   const [replyingTo, setReplyingTo] = useState(null);
 
-  const [replyTextPart1, setReplyTextPart1] = useState('');
-  const [replyTextPart2, setReplyTextPart2] = useState('');
+  const [replyTextPart1, setReplyTextPart1] = useState("");
+  const [replyTextPart2, setReplyTextPart2] = useState("");
 
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUserData(JSON.parse(storedUser));
     }
@@ -31,7 +37,7 @@ const CommentItem = ({ comment }) => {
   const UserNameCurrent = userData?.username;
 
   useEffect(() => {
-    setLikedComments(prevState => ({
+    setLikedComments((prevState) => ({
       ...prevState,
       [comment._id]: comment.likedBy.includes(UserNameCurrent),
     }));
@@ -41,7 +47,7 @@ const CommentItem = ({ comment }) => {
     const newLikedState = !likedComments[comment._id];
 
     try {
-      setLikedComments(prevState => ({
+      setLikedComments((prevState) => ({
         ...prevState,
         [comment._id]: newLikedState,
       }));
@@ -54,7 +60,7 @@ const CommentItem = ({ comment }) => {
         await unLikeComment(comment._id); // Unlike comment
       }
     } catch (error) {
-      console.error('Error while handling like/unlike for comment:', error);
+      console.error("Error while handling like/unlike for comment:", error);
     }
   };
   const handleInputFocus = () => setIsFocusing(true);
@@ -66,7 +72,6 @@ const CommentItem = ({ comment }) => {
     }, 200);
   };
 
-
   const handleReply = (username) => {
     setReplyingTo(username);
     setIsReplying(true);
@@ -76,34 +81,40 @@ const CommentItem = ({ comment }) => {
   const handleReplyChange = (event) => {
     setReplyText(event.target.value);
   };
-  const handleLikeReply = async (replyId) => {
+  const handleLikeReply = async (replyId) => {};
 
-  };
-
-
-
-  const handleSubmitReply = async (CommentId, replyTextPart1, replyTextPart2) => {
+  const handleSubmitReply = async (
+    CommentId,
+    replyTextPart1,
+    replyTextPart2
+  ) => {
     if (!replyTextPart1.trim()) return;
     try {
-      const response = await addReplyComment(CommentId, replyTextPart1, replyingTo);
-      setReplyTextPart1('');
+      const response = await addReplyComment(
+        CommentId,
+        replyTextPart1,
+        replyingTo
+      );
+      setReplyTextPart1("");
       setReplyingTo(null);
       const replyid = response?.data?._id;
       if (response.status === 201) {
         console.log(replyTextPart2);
-        const uploadComemntVoice = await uploadVoiceReply(CommentId, replyid, replyTextPart2);
-        setReplyTextPart2('');
-
+        const uploadComemntVoice = await uploadVoiceReply(
+          CommentId,
+          replyid,
+          replyTextPart2
+        );
+        setReplyTextPart2("");
       }
       setIsReplying(false);
     } catch (error) {
-      console.error('Lỗi khi gửi câu trả lời:', error);
+      console.error("Lỗi khi gửi câu trả lời:", error);
     }
   };
 
-
   const toggleReplies = () => {
-    setShowReplies(prevState => !prevState);
+    setShowReplies((prevState) => !prevState);
   };
 
   const getTimeAgo = (createdAt) => {
@@ -131,7 +142,7 @@ const CommentItem = ({ comment }) => {
       audio.pause();
     } else {
       audio.play().catch((error) => {
-        console.error('Error playing audio:', error);
+        console.error("Error playing audio:", error);
       });
     }
 
@@ -150,11 +161,14 @@ const CommentItem = ({ comment }) => {
             />
           </div>
           <div className="reply-content">
-            <p className='reply-author'>{reply.createdBy.fullname}</p>
+            <p className="reply-author">{reply.createdBy.fullname}</p>
             <p className="comment-time">{getTimeAgo(reply.createdAt)}</p>
             {reply.replyFor && (
               <div className="reply-for">
-                <Link to={`/profile/${reply.replyFor}`} className="reply-for-user">
+                <Link
+                  to={`/profile/${reply.replyFor}`}
+                  className="reply-for-user"
+                >
                   {reply.replyFor}
                 </Link>
                 <p className="reply-text">{reply.text}</p>
@@ -162,10 +176,13 @@ const CommentItem = ({ comment }) => {
             )}
             {reply.voice && (
               <div className="comment-audio-controls">
-                <button onClick={handlePlayPause} className="btn comment-audio-btn">
+                <button
+                  onClick={handlePlayPause}
+                  className="btn comment-audio-btn"
+                >
                   <img
                     src={soundWave}
-                    alt={isPlaying ? 'Pause' : 'Play'}
+                    alt={isPlaying ? "Pause" : "Play"}
                     className="comment-audio-icon"
                   />
                 </button>
@@ -178,7 +195,6 @@ const CommentItem = ({ comment }) => {
     });
   };
 
-
   return (
     <div className="comment-item">
       <div className="comment-avatar-container">
@@ -190,16 +206,19 @@ const CommentItem = ({ comment }) => {
       </div>
 
       <div className="comment-content">
-        <p className='comment-author'>{comment.createdBy.fullname}</p>
+        <p className="comment-author">{comment.createdBy.fullname}</p>
         <p className="comment-time">{getTimeAgo(comment.createdAt)}</p>
-        <p className='comment-text'>{comment.text}</p>
+        <p className="comment-text">{comment.text}</p>
         <div className="comment-voice-container">
           {comment.voice && (
             <div className="comment-audio-controls">
-              <button onClick={handlePlayPause} className="btn comment-audio-btn">
+              <button
+                onClick={handlePlayPause}
+                className="btn comment-audio-btn"
+              >
                 <img
                   src={soundWave}
-                  alt={isPlaying ? 'Pause' : 'Play'}
+                  alt={isPlaying ? "Pause" : "Play"}
                   className="comment-audio-icon"
                 />
               </button>
@@ -208,24 +227,31 @@ const CommentItem = ({ comment }) => {
           )}
         </div>
 
-
-
         <div className="comment-actions">
           <button onClick={handleLikeComment} className="comment-like-btn">
             <FaHeart
               size={20}
-              color={likedComments[comment._id] ? 'red' : 'gray'}
+              color={likedComments[comment._id] ? "red" : "gray"}
             />
             <span>{likesCount}</span>
           </button>
-          <button onClick={() => handleReply(comment.createdBy.username)} className="comment-reply-btn">
+          <button
+            onClick={() => handleReply(comment.createdBy.username)}
+            className="comment-reply-btn"
+          >
             <FaReply /> Trả lời
           </button>
 
-
           {replies.length > 0 && (
-            <button onClick={toggleReplies} className="comment-view-replies-btn">
-              {showReplies ? 'Ẩn các trả lời' : `Xem ${replies.length} trả lời`}
+            <button
+              onClick={toggleReplies}
+              className="comment-view-replies-btn"
+            >
+              <span>
+                {showReplies
+                  ? "Ẩn các trả lời"
+                  : `Xem ${replies.length} trả lời`}
+              </span>
             </button>
           )}
         </div>
@@ -233,10 +259,12 @@ const CommentItem = ({ comment }) => {
         {showReplies && <div className="replies">{renderReplies()}</div>}
 
         {isReplying && (
-          <div className="reply-input-container">   <p className="replying-to">
-            Trả lời: <span className="replying-to-username">@{replyingTo}</span>
-          </p>
-
+          <div className="reply-input-container">
+            {" "}
+            <p className="replying-to">
+              Trả lời:{" "}
+              <span className="replying-to-username">@{replyingTo}</span>
+            </p>
             <div className="reply-input-container">
               <input
                 type="text"
@@ -257,19 +285,16 @@ const CommentItem = ({ comment }) => {
                 className="reply-input-part2"
               />
             </div>
-
             <button
               className="btn btn-outline-light reply-submit-btn"
-              onClick={() => handleSubmitReply(comment._id, replyTextPart1, replyTextPart2)}
+              onClick={() =>
+                handleSubmitReply(comment._id, replyTextPart1, replyTextPart2)
+              }
             >
               Gửi
             </button>
-
-
-
           </div>
         )}
-
       </div>
     </div>
   );

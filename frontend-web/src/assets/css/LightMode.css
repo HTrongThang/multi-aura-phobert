@@ -2,6 +2,9 @@
   --background-primary: #ffffff;
   --background-secondary: #dee0e2;
   --background-thirdary: #f8f9fa;
+  --background-textbox: #dfd7d7;
+  --background-secondary-textbox: #fcfdff; /* Nền cho textbox */
+  --background-textbox-hover: #f0f0f0; /* Màu nền khi hover */
   --background-hover: #c7c3c3;
   --text-primary: #212529;
   --text-secondary: #6c757d;
@@ -66,6 +69,9 @@
   --background-primary: #1a1a1a;
   --background-secondary: #2c2c2c;
   --background-thỉrdary: #000000;
+  --background-textbox: #464242;
+  --background-secondary-textbox: #56595c;
+  --background-textbox-hover: #696868;
   --background-hover: #000000;
   --text-primary: #e0e0e0;
   --text-secondary: #a0a0a0;
