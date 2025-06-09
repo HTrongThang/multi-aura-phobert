@@ -98,7 +98,6 @@ abbreviation_dict = {
     'mn': 'mọi người', 'fb': 'facebook', 'yt': 'youtube', 'ig': 'instagram',
     'lol': 'laugh out loud', 'omg': 'oh my god', 'idk': 'I don’t know', 'btw': 'by the way',
     'tui': 'tôi', 'cmt': 'comment', 'ns': 'nói', 'lm': 'làm', 'bik': 'biết', 'bjt': 'biết'
-    # Bạn có thể thêm các từ viết tắt khác vào đây
 }
 
 def normalize_text(text):

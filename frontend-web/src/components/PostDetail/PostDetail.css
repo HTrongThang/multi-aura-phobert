@@ -42,12 +42,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(
-    --post-detail-image-area-background,
-    black
-  ); /* Thay thế */
-  border-right: 1px solid var(--border-color, #333); /* Thêm đường phân cách */
+  background-color: var(--post-detail-image-area-background, black);
+  border-right: 1px solid var(--border-color, #333);
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  max-width: 569px; /* Giới hạn chiều rộng */
+  max-height: 730px; /* Giới hạn chiều cao */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Ẩn phần tràn ra */
 }
 
 .post-detail-left img,
@@ -58,7 +60,6 @@
   object-fit: contain;
   border-radius: 8px; /* Bo góc nhẹ cho ảnh */
 }
-
 
 /* Post Information Section */
 
@@ -326,6 +327,11 @@
   color: var(--accent-color-hover, #0056b3); /* Thay thế */
 }
 
+.show-Input-Comment.show,
+.comment-submit-button.show {
+  top: 78%;
+}
+
 .fas {
   /* Dùng cho icon FontAwesome nếu có */
   font-size: 20px;
@@ -399,7 +405,30 @@
   .share-input {
     font-size: 14px;
   }
+
   .post-detail-add-comment {
     position: relative; /* Bỏ absolute để nó nằm cuối flow */
   }
+}
+
+.post-detail-left .image-gallery-slide {
+  height: 710px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-detail-left .image-gallery-image {
+  width: 100%;
+  height: 100%;
+  max-width: 510px;
+  max-height: 710px;
+}
+
+.post-detail-left .image-gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: transparent;
+  border-radius: 10px;
 }
