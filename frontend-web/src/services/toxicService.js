@@ -38,8 +38,9 @@ export const getToxicComment = async (comment) => {
     }
 
     const response = await axios.post(
-      "http://192.168.1.5:5000/predict", // Kiểm tra xem đây có phải URL chính xác không
-      { text: comment },
+      "http://192.168.3.138:5000/predict",  // Kiểm tra xem đây có phải URL chính xác không
+      { "text": comment },
+
       {
         headers: {
           Authorization: `Bearer ${token}`,
