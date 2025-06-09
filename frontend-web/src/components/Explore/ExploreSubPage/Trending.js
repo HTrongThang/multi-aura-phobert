@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getTrendingPosts } from '../../../services/searchService'; 
-import Post from '../../Post/Post'; 
+import React, { useEffect, useState } from "react";
+import { getTrendingPosts } from "../../../services/searchService";
+import Post from "../../Post/Post";
 
 const ForYou = () => {
   const [trendingPosts, settrendingPosts] = useState([]);
@@ -9,12 +9,12 @@ const ForYou = () => {
   useEffect(() => {
     const fetchTrendingPosts = async () => {
       try {
-        const response = await getTrendingPosts(); 
-        settrendingPosts(response.data); 
+        const response = await getTrendingPosts();
+        settrendingPosts(response.data);
       } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu Trending:', error);
+        console.error("Lỗi khi lấy dữ liệu Trending:", error);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -22,13 +22,15 @@ const ForYou = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>; 
+    return <p>Loading...</p>;
   }
 
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       {trendingPosts.map((post) => (
-        <Post key={post._id} post={post} /> 
+        <Post key={post._id} post={post} />
       ))}
     </div>
   );

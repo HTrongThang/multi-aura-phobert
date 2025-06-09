@@ -23,6 +23,7 @@ import {
 } from "../../services/exploreSevice";
 import PostDetail from "../PostDetail/PostDetail";
 import Gallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 import soundWave from "../../assets/img/audio_wave.gif";
 
 function Post({ post, userData, deletePost }) {
@@ -94,12 +95,12 @@ function Post({ post, userData, deletePost }) {
             alt="Post"
             className="img-fluid rounded mb-4"
             onClick={openDetail}
-            style={{
-              width: "600px",
-              height: "auto",
-              objectFit: "contain",
-              display: "block",
-            }}
+            // style={{
+            //   width: "600px",
+            //   height: "auto",
+            //   objectFit: "contain",
+            //   display: "block",
+            // }}
           />
         </div>
       );
@@ -155,6 +156,7 @@ function Post({ post, userData, deletePost }) {
             showFullscreenButton={false}
             showPlayButton={false}
             onClick={openDetail}
+            additionalClass="post-view-gallery"
           />
         </div>
       );
@@ -241,40 +243,42 @@ function Post({ post, userData, deletePost }) {
         </div>
 
         {/* Đoạn ghi âm với biểu tượng play/pause */}
-        <p className="content-post">
-          <span className="post-description">{post.description}</span>
-        </p>
+        <div className="post-body">
+          <p className="content-post">
+            <span className="post-description">{post.description}</span>
+          </p>
 
-        {post.voice && (
-          <div className="post-audio-controls">
-            <button
-              onClick={handlePlayPause}
-              className="btn audio-btn audio-post-play"
-            >
-              <img
-                src={soundWave}
-                alt={isPlaying ? "Pause" : "Play"}
-                className="post-audio-icon"
-              />
-            </button>
-            <audio ref={audioRef} src={post.voice} />
-          </div>
-        )}
+          {post.voice && (
+            <div className="post-audio-controls">
+              <button
+                onClick={handlePlayPause}
+                className="btn audio-btn audio-post-play"
+              >
+                <img
+                  src={soundWave}
+                  alt={isPlaying ? "Pause" : "Play"}
+                  className="post-audio-icon"
+                />
+              </button>
+              <audio ref={audioRef} src={post.voice} />
+            </div>
+          )}
 
-        {renderImages()}
+          {renderImages()}
 
-        {showAllImages && (
-          <div className="image-grid">
-            {post.images.map((image, index) => (
-              <img
-                key={index}
-                src={image.url}
-                alt={`Post ${index}`}
-                className="img-fluid rounded mb-4"
-              />
-            ))}
-          </div>
-        )}
+          {showAllImages && (
+            <div className="image-grid">
+              {post.images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image.url}
+                  alt={`Post ${index}`}
+                  className="img-fluid rounded mb-4"
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
       {isDetailOpen && (
         <>

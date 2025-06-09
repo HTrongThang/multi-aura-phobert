@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getNewsPosts } from '../../../services/searchService'; 
-import Post from '../../Post/Post'; 
+import React, { useEffect, useState } from "react";
+import { getNewsPosts } from "../../../services/searchService";
+import Post from "../../Post/Post";
 
 const ForYou = () => {
   const [newPosts, setnewPosts] = useState([]);
@@ -9,12 +9,12 @@ const ForYou = () => {
   useEffect(() => {
     const fetchnewPosts = async () => {
       try {
-        const response = await getNewsPosts(); 
-        setnewPosts(response.data); 
+        const response = await getNewsPosts();
+        setnewPosts(response.data);
       } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu For You:', error);
+        console.error("Lỗi khi lấy dữ liệu For You:", error);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -22,13 +22,15 @@ const ForYou = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>; 
+    return <p>Loading...</p>;
   }
 
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       {newPosts.map((post) => (
-        <Post key={post._id} post={post} /> 
+        <Post key={post._id} post={post} />
       ))}
     </div>
   );
