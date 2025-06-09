@@ -2,10 +2,7 @@
 .post {
   width: 100%;
   height: auto;
-  background-color: var(
-    --post-background,
-    var(--background-secondary)
-  );
+  background-color: var(--post-background, var(--background-secondary));
   color: var(--post-text-color, var(--text-primary));
   padding: 20px;
   border-radius: 10px;
@@ -14,7 +11,9 @@
 }
 
 .img-post {
+  display: flex;
   width: 100%;
+  justify-content: center !important;
 }
 
 .post .avatar {
@@ -26,9 +25,7 @@
 }
 
 .post .text-muted {
-  color: var(
-    --text-secondary
-  ) !important;
+  color: var(--text-secondary) !important;
 }
 
 .post button.btn-link {
@@ -39,19 +36,22 @@
 }
 
 .post button.btn-link:hover {
-  color: var(
-    --post-icon-button-hover-color,
-    var(--accent-color)
-  );
+  color: var(--post-icon-button-hover-color, var(--accent-color));
   text-decoration: none;
 }
 
-.post .d-flex {
+/* .post .d-flex {
   align-items: center;
-}
+} */
 
 .post .mr-3 {
   margin-right: 1rem;
+}
+
+.box-items {
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
 }
 
 .comments {
@@ -59,10 +59,7 @@
 }
 
 input.comment-text {
-  background-color: var(
-    --comment-input-background,
-    var(--background-primary)
-  );
+  background-color: var(--comment-input-background, var(--background-primary));
   color: var(--comment-input-text, var(--text-primary));
   border: none;
   border-bottom: 1px solid var(--comment-input-border, var(--border-color));
@@ -98,16 +95,10 @@ input.comment-text::placeholder {
 
 input.comment-text:focus,
 input.comment-text:active {
-  border-color: var(
-    --comment-input-border-focus,
-    var(--accent-color)
-  );
+  border-color: var(--comment-input-border-focus, var(--accent-color));
   border-bottom: 1px solid
     var(--comment-input-border-focus, var(--accent-color)) !important;
-  background-color: var(
-    --comment-input-background,
-    var(--background-primary)
-  );
+  background-color: var(--comment-input-background, var(--background-primary));
   color: var(--comment-input-text, var(--text-primary));
   box-shadow: none;
 }
@@ -153,13 +144,14 @@ input.comment-text:active {
 .svg-inline--fa:hover {
   color: var(--icon-hover-color, var(--accent-color)); /* Màu hover chung */
   cursor: pointer;
+  transform: scale(1.2);
 }
 
 .text-time,
 /* .text-fullname, (đã có style riêng ở trên) */
 .content-post {
-  margin: 0;
-  padding: 0;
+  margin: 10px 0;
+  padding: 0 0 0 10px;
 }
 
 .text-time {
@@ -182,10 +174,7 @@ input.comment-text:active {
   border: none;
   cursor: pointer;
   padding: 0;
-  color: var(
-    --post-icon-button-color,
-    var(--text-primary)
-  );
+  color: var(--post-icon-button-color, var(--text-primary));
   font-size: 30px;
   margin-right: 10px !important;
   width: 40px !important;
@@ -261,8 +250,8 @@ img.post-audio-icon {
   align-items: center;
   overflow: hidden;
   background-color: var(
-    --post-detail-image-area-background, /* Nên là một biến chung hơn như --image-container-background */
-    #000 
+    --post-detail-image-area-background,
+    /* Nên là một biến chung hơn như --image-container-background */ #000
   );
   border-radius: 8px;
   transition: background-color 0.3s ease;

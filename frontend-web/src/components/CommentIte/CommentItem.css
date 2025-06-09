@@ -2,10 +2,18 @@
 .comment-item {
   display: flex;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
   color: #fff;
+  background-color: var(--background-textbox);
+}
+
+.comment-item:hover {
+  background-color: var(--background-textbox);
+  box-shadow: 1px 1px 10px rgba(212, 62, 62, 0.2);
+  transform: scale(1.02);
+  transition: background-color 0.3s ease;
 }
 
 .comment-avatar-container {
@@ -55,6 +63,11 @@
   gap: 5px;
 }
 
+.comment-like-btn span,
+.comment-view-replies-btn span {
+  color: var(--text-primary, #fff);
+}
+
 .comment-like-btn:hover,
 .comment-reply-btn:hover,
 .comment-view-replies-btn:hover {
@@ -75,8 +88,16 @@
 
 .replies {
   margin-top: 10px;
-  padding-left: 20px;
-  border-left: 2px solid #444;
+  padding: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: var(--background-secondary-textbox);
+}
+.replies:hover {
+  background-color: var(--background-textbox-hover);
+  box-shadow: 1px 1px 10px rgba(212, 62, 62, 0.2);
+  transform: scale(1.02);
+  transition: background-color 0.3s ease;
 }
 
 .comment-reply {
