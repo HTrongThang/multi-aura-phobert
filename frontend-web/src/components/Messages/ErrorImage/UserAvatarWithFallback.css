@@ -1,0 +1,12 @@
+.user-avatar-fallback {
+  background-color: #555; /* Màu nền cho fallback */
+  color: #ccc; /* Màu cho icon */
+
+  /* Căn giữa icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px; /* Kích thước icon */
+  object-fit: cover; /* Giữ thuộc tính này để đảm bảo đồng nhất */
+}

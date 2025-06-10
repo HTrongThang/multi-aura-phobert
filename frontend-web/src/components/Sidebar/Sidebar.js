@@ -108,7 +108,7 @@ function Sidebar() {
         </li>
 
         {/* Notifications */}
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <button
             // Keep manual active state for Notifications button based on drawer or specific logic
             className={`tab-link NotificationsPage ${ // Assuming NotificationsPage class is for specific button styling
@@ -124,7 +124,7 @@ function Sidebar() {
             isOpen={isDrawerOpen}
             onClose={() => setIsDrawerOpen(false)}
           />
-        </li>
+        </li> */}
 
         {/* Profile */}
         <li className="nav-item">

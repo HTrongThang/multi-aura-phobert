@@ -342,10 +342,12 @@ img.post-audio-icon {
   border: 1px solid var(--comment-input-border, #555);
   padding: 8px;
   border-radius: 5px;
-  width: 100% !important;
+  width: 80% !important;
   margin-top: 10px;
   transition: border-color 0.3s ease, background-color 0.3s ease,
     color 0.3s ease;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .input-voice:focus {

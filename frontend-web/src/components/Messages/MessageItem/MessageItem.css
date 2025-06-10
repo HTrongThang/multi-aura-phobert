@@ -18,7 +18,8 @@
 
 .message-item.selected {
   background-color: #3b3b3b !important; /* Nền nổi bật khi được chọn */
-  border-right: 5px solid white;
+  /* border-right: 5px solid white; */
+  width: 100%;
 }
 
 .avatar {
@@ -27,6 +28,24 @@
   border-radius: 50%;
   margin-right: 10px;
   object-fit: cover; /* Giúp avatar không bị méo */
+}
+
+.avatar-fallback {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #444;
+}
+
+.avatar-fallback .svg-inline--fa {
+  color: #ffffff;
+}
+
+.message-item.selected .message-last {
+  color: var(--text-thirdary, #ffffff);
 }
 
 .message-info {
