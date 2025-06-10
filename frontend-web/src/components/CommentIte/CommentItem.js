@@ -286,7 +286,7 @@ const CommentItem = ({ comment }) => {
               />
             </div>
             <button
-              className="btn btn-outline-light reply-submit-btn"
+              className="btn reply-submit-btn"
               onClick={() =>
                 handleSubmitReply(comment._id, replyTextPart1, replyTextPart2)
               }

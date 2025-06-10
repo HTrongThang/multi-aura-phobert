@@ -293,10 +293,7 @@ function Post({ post, userData, deletePost }) {
         </>
       )}
 
-      <div
-        className="d-flex align-items-center box-items"
-        style={{ width: "85%" }}
-      >
+      <div className="box-items" style={{ width: "85%" }}>
         <div className="d-flex">
           <button
             className="btn btn-link mr-3"
@@ -348,7 +345,7 @@ function Post({ post, userData, deletePost }) {
           onKeyDown={(e) => handleKeyDown(e)}
         />
       )}
-      <div className="d-flex mt-3">
+      <div className="input-comment">
         <input
           type="text"
           className="form-control comment-text"
