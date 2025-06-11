@@ -53,6 +53,7 @@
 
 .chat-page {
   background-color: var(--background-primary, #000000);
+  height: 90%;
 }
 
 .sidebar-wrapper {

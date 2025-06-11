@@ -27,6 +27,31 @@
   border-radius: 50%; /* Bo tròn ảnh */
   margin-bottom: 10px;
   border: 2px solid white; /* Viền xanh nhạt */
+  object-fit: cover;
+}
+
+.header-avatar-fallback {
+  /* Kích thước và style tương tự avatar */
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid white;
+
+  /* Style để hiển thị icon */
+  background-color: #333; /* Màu nền cho khối fallback */
+  color: #a0a0a0; /* Màu xám cho icon */
+  font-size: 40px; /* Kích thước icon */
+
+  /* Căn giữa icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-avatar-fallback .fa-ghost {
+  /* Sử dụng FontAwesome icon */
+  color: #fff; /* Màu trắng cho icon */
 }
 
 .setting-sidebar-chat .header h3 {

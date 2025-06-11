@@ -15,6 +15,7 @@ import {
   faChevronDown,
   faChevronUp,
   faEllipsisV,
+  faGhost,
 } from "@fortawesome/free-solid-svg-icons";
 import "./SettingSidebarChat.css";
 
@@ -31,12 +32,21 @@ const SettingSidebarChat = ({
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedUserID, setSelectedUserID] = useState(null);
   const [showLeaveButton, setShowLeaveButton] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const isUser = userCurent?.userID;
 
   const isGroup = currentChat.conversation_type === "Group";
   const currentUserID = userCurent ? userCurent.userID : null;
   let avatar;
   let nameDisplay;
+
+  useEffect(() => {
+    setImageError(false);
+  }, [currentChat]);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   // Xử lý avatar và tên hiển thị
   if (isGroup) {
@@ -91,7 +101,20 @@ const SettingSidebarChat = ({
     <div className={`setting-sidebar-chat ${isOpen ? "visible" : "hidden"}`}>
       {/* Header */}
       <div className="header">
-        <img src={avatar} alt="Avatar" />
+        {imageError ? (
+          // Nếu có lỗi, hiển thị icon thay thế
+          <div className="header-avatar-fallback">
+            <FontAwesomeIcon icon={faGhost} />
+          </div>
+        ) : (
+          // Nếu không, hiển thị ảnh và thêm trình xử lý lỗi
+          <img
+            src={avatar}
+            alt="Avatar"
+            className="header-avatar"
+            onError={handleImageError} 
+          />
+        )}
         <h3>{nameDisplay}</h3>
         <div className="actions">
           <button>

@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  min-width: 300px;
 }
 
 .messchat-item.sent {
@@ -23,11 +24,15 @@
 .messchat-item.received .message-content {
   background-color: var(--text-secondary, #a0a0a0); /* Màu tin nhắn của bạn */
   color: white;
+  min-width: 300px;
+  padding-left: 20px;
 }
 
 .messchat-item.sent .message-content {
   background-color: #3797f0; /* Màu tin nhắn của người khác */
   color: white;
+  min-width: 300px;
+  padding-left: 20px;
 }
 
 .avatar {
@@ -35,6 +40,24 @@
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.avatar-fallback {
+  /* Kích thước tương tự class .avatar */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+
+  /* Style để hiển thị icon */
+  background-color: #444; /* Màu nền cho khối fallback */
+  color: #ffffff; /* Màu trắng cho icon */
+  font-size: 20px; /* Kích thước icon */
+
+  /* Căn giữa icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .message-time {
@@ -56,8 +79,8 @@
   margin-bottom: 5px;
 }
 .placeholder-avatar {
-  width: 40px; /* Kích thước tương tự avatar */
-  height: 40px;
+  width: 50px; /* Kích thước tương tự avatar */
+  height: 50px;
   display: inline-block;
   margin-right: 10px;
 }

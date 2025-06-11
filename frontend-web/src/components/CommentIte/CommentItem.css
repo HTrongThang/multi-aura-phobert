@@ -295,3 +295,13 @@ audio {
   font-weight: bold;
   color: var(--text-primary, #fff);
 }
+
+.reply-submit-btn {
+  background-color: var(--button-primary-background, #007bff) !important;
+  color: var(--button-primary-text, #fff) !important;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
