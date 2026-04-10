@@ -9,9 +9,9 @@
 
 | No. | Student ID | Full Name        |    Role     |
 | :-: | :--------: | :--------------- | :---------: |
-|  1  | 2001210823 | Hồ Thị Kiều Oanh | Team Leader |
+|  1  | 2001210823 | Hồ Thị Kiều Oanh |   Member    |
 |  2  | 2001216310 | Nguyễn Thanh Vi  |   Member    |
-|  3  | 2001216158 | Ha Trong Thang   |   Member    |
+|  3  | 2001216158 | Ha Trong Thang   | Team Leader |
 
 ---
 
